@@ -119,6 +119,7 @@ function onPositionError(error) {
 
 function onCameraSuccess(imageData) {
     var image = document.getElementById('myImage');
+    image.style.display = 'block';
     image.src = "data:image/jpeg;base64," + imageData;
     //image.src = imageData;
 }
