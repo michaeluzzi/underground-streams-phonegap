@@ -71,7 +71,7 @@ var onPositionSuccess = function(position) {
           'Timestamp: '         + position.timestamp                + '\n');
     
     
-    var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + '"';      
+    var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
     alert(str);
     $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
     //$.getJSON(str,
@@ -94,6 +94,13 @@ var onPositionSuccess = function(position) {
         		
         }
     );
+    
+    // camera
+    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
+    	destinationType: Camera.DestinationType.DATA_URL
+	});
+    
+    
 };
 
 // onError Callback receives a PositionError object
@@ -101,6 +108,16 @@ var onPositionSuccess = function(position) {
 function onPositionError(error) {
     alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
+}
+
+
+function onCameraSuccess(imageData) {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;
+}
+
+function onCameraFail(message) {
+   	alert('Failed because: ' + message);
 }
 
 
