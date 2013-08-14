@@ -27,13 +27,13 @@ var app = {
         
         
         // comment out next line when deploying
-        app.receivedEvent('deviceready');
+        //app.receivedEvent('deviceready');
         
         // move this to onDeviceReady when deploying
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+        //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
         
         //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.684153&lon=-73.977814",
-        $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
+        /*$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
         	function(nearbyStations) {
         		//alert(data);
         		jsonObj.nearbyStations = nearbyStations;
@@ -52,7 +52,7 @@ var app = {
 				}
         		
         	}
-        );
+        );*/
         
         /*$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getContentByLine/1",
         	function(data) {
@@ -76,6 +76,29 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+        
+        $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
+        	function(nearbyStations) {
+        		//alert(data);
+        		jsonObj.nearbyStations = nearbyStations;
+        		//alert(jsonObj.nearbyStations[0].STOP_NAME);
+        		for (var i=0; i<jsonObj.nearbyStations.length; i++)
+				{
+					var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
+					$.getJSON(url,
+						function(stationContent) {
+							$("#apiTest").append("<p>" + stationContent + "</p>");
+							
+							
+							
+						}
+					);
+				}
+        		
+        	}
+        );
         
         
         //var url = 'http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations';
