@@ -102,8 +102,8 @@ var onPositionSuccess = function(position) {
     );
     
     // camera
-    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI/*,
-    	destinationType: Camera.DestinationType.DATA_URL*/
+    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
+    	destinationType: destinationType.DATA_URL
 	});
     
     
@@ -119,8 +119,8 @@ function onPositionError(error) {
 
 function onCameraSuccess(imageData) {
     var image = document.getElementById('myImage');
-    //image.src = "data:image/jpeg;base64," + imageData;
-    image.src = imageData;
+    image.src = "data:image/jpeg;base64," + imageData;
+    //image.src = imageData;
 }
 
 function onCameraFail(message) {
