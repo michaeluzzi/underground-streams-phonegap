@@ -152,8 +152,8 @@ var onPositionSuccess = function(position) {
           'Timestamp: '         + position.timestamp                + '\n');
     
     
-    var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + '"';      
-    alert(str);
+    //var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + '"';      
+    //alert(str);
     $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
     //$.getJSON(str,
         function(nearbyStations) {
