@@ -96,8 +96,8 @@ var onPositionSuccess = function(position) {
     );
     
     // camera
-    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
-    	destinationType: Camera.DestinationType.DATA_URL
+    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50/*,
+    	destinationType: Camera.DestinationType.DATA_URL*/
 	});
     
     
