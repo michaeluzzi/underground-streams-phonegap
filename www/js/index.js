@@ -43,7 +43,7 @@ var app = {
 					var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
 					$.getJSON(url,
 						function(stationContent) {
-							//$("#apiTest").append("<p>" + stationContent + "</p>");
+							$("#apiTest").append("<p>" + stationContent + "</p>");
 							
 							
 							
@@ -113,6 +113,7 @@ var app = {
 };
 
 function onFileSystemSuccess(fileSystem) {
+	$("#apiTest").append("<p>fs success</p>");
     alert(fileSystem.name);
     alert(fileSystem.root.name);
 }
