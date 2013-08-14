@@ -79,6 +79,8 @@ var app = {
         
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
         
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        
         $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
         	function(nearbyStations) {
         		//alert(data);
@@ -134,6 +136,31 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+// onSuccess Callback
+// This method accepts a Position object, which contains the
+// current GPS coordinates
+//
+var onSuccess = function(position) {
+    alert('Latitude: '          + position.coords.latitude          + '\n' +
+          'Longitude: '         + position.coords.longitude         + '\n' +
+          'Altitude: '          + position.coords.altitude          + '\n' +
+          'Accuracy: '          + position.coords.accuracy          + '\n' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+          'Heading: '           + position.coords.heading           + '\n' +
+          'Speed: '             + position.coords.speed             + '\n' +
+          'Timestamp: '         + position.timestamp                + '\n');
+};
+
+// onError Callback receives a PositionError object
+//
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
+
+
+
 
 function onFileSystemSuccess(fileSystem) {
 	$("#apiTest").append("<p>fs success</p>");
