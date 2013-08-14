@@ -77,11 +77,11 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemFail);
         
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError);
         
-        $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
+        /*$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
         	function(nearbyStations) {
         		//alert(data);
         		jsonObj.nearbyStations = nearbyStations;
@@ -100,7 +100,7 @@ var app = {
 				}
         		
         	}
-        );
+        );*/
         
         
         //var url = 'http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations';
@@ -141,7 +141,7 @@ var app = {
 // This method accepts a Position object, which contains the
 // current GPS coordinates
 //
-var onSuccess = function(position) {
+var onPositionSuccess = function(position) {
     alert('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
           'Altitude: '          + position.coords.altitude          + '\n' +
@@ -150,11 +150,36 @@ var onSuccess = function(position) {
           'Heading: '           + position.coords.heading           + '\n' +
           'Speed: '             + position.coords.speed             + '\n' +
           'Timestamp: '         + position.timestamp                + '\n');
+    
+    
+    var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
+    alert(str);
+    $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
+    //$.getJSON(str,
+        function(nearbyStations) {
+        	//alert(data);
+        	jsonObj.nearbyStations = nearbyStations;
+        	//alert(jsonObj.nearbyStations[0].STOP_NAME);
+        	for (var i=0; i<jsonObj.nearbyStations.length; i++)
+			{
+				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
+				$.getJSON(url,
+					function(stationContent) {
+						$("#apiTest").append("<p>" + stationContent + "</p>");
+							
+							
+							
+					}
+				);
+			}
+        		
+        }
+    );
 };
 
 // onError Callback receives a PositionError object
 //
-function onError(error) {
+function onPositionError(error) {
     alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
 }
@@ -168,6 +193,6 @@ function onFileSystemSuccess(fileSystem) {
     alert(fileSystem.root.name);
 }
 
-function fail(evt) {
+function onFileSystemfail(evt) {
     alert(evt.target.error.code);
 }
