@@ -22,46 +22,7 @@ var jsonObj = {};
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
-        
-        
-        
-        // comment out next line when deploying
-        //app.receivedEvent('deviceready');
-        
-        // move this to onDeviceReady when deploying
-        //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
-        
-        //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.684153&lon=-73.977814",
-        /*$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
-        	function(nearbyStations) {
-        		//alert(data);
-        		jsonObj.nearbyStations = nearbyStations;
-        		//alert(jsonObj.nearbyStations[0].STOP_NAME);
-        		for (var i=0; i<jsonObj.nearbyStations.length; i++)
-				{
-					var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
-					$.getJSON(url,
-						function(stationContent) {
-							$("#apiTest").append("<p>" + stationContent + "</p>");
-							
-							
-							
-						}
-					);
-				}
-        		
-        	}
-        );*/
-        
-        /*$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getContentByLine/1",
-        	function(data) {
-        		//$.each(data, function(key, val) {alert(key + " " + val});
-        		$("#apiTest").append("<p>" + data[0].stop_ID + "</p>");
-        		//alert(data);
-        	}
-        );*/
-        
+        this.bindEvents();    
     },
     // Bind Event Listeners
     //
@@ -80,48 +41,6 @@ var app = {
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemFail);
         
         navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError);
-        
-        /*$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
-        	function(nearbyStations) {
-        		//alert(data);
-        		jsonObj.nearbyStations = nearbyStations;
-        		//alert(jsonObj.nearbyStations[0].STOP_NAME);
-        		for (var i=0; i<jsonObj.nearbyStations.length; i++)
-				{
-					var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
-					$.getJSON(url,
-						function(stationContent) {
-							$("#apiTest").append("<p>" + stationContent + "</p>");
-							
-							
-							
-						}
-					);
-				}
-        		
-        	}
-        );*/
-        
-        
-        //var url = 'http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations';
-        //var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-        
-        
-
-	    /*jQuery(document).ready(function() {
-	        $.getJSON(flickerAPI, {
-		        tags: "pizza",
-		        format: "json"
-	        })
-	        .done(function( data ) {
-			    $.each( data.items, function( i, item ) {
-			      $( "<img/>" ).attr( "src", item.media.m ).appendTo( "#images" );
-			      if ( i === 3 ) {
-			        return false;
-			      }
-			    });
-			});
-		});*/
         
     },
     // Update DOM on a Received Event
@@ -152,8 +71,8 @@ var onPositionSuccess = function(position) {
           'Timestamp: '         + position.timestamp                + '\n');
     
     
-    //var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + '"';      
-    //alert(str);
+    var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + '"';      
+    alert(str);
     $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
     //$.getJSON(str,
         function(nearbyStations) {
@@ -193,6 +112,6 @@ function onFileSystemSuccess(fileSystem) {
     alert(fileSystem.root.name);
 }
 
-function onFileSystemfail(evt) {
+function onFileSystemFail(evt) {
     alert(evt.target.error.code);
 }
