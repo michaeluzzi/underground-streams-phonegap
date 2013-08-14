@@ -28,6 +28,8 @@
 
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
+	
+	<!-- <access origin="http://underground-streams-dev.elasticbeanstalk.com" /> -->
 
 	<!-- sample preference specification -->
 	<!-- <preference name="autorotate" value="false" readonly="true"/> -->

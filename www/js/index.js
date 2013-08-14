@@ -16,10 +16,52 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
+var jsonObj = {};
+
 var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        
+        
+        
+        // comment out next line when deploying
+        app.receivedEvent('deviceready');
+        
+        // move this to onDeviceReady when deploying
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+        
+        //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.684153&lon=-73.977814",
+        $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
+        	function(nearbyStations) {
+        		//alert(data);
+        		jsonObj.nearbyStations = nearbyStations;
+        		//alert(jsonObj.nearbyStations[0].STOP_NAME);
+        		for (var i=0; i<jsonObj.nearbyStations.length; i++)
+				{
+					var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
+					$.getJSON(url,
+						function(stationContent) {
+							//$("#apiTest").append("<p>" + stationContent + "</p>");
+							
+							
+							
+						}
+					);
+				}
+        		
+        	}
+        );
+        
+        /*$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getContentByLine/1",
+        	function(data) {
+        		//$.each(data, function(key, val) {alert(key + " " + val});
+        		$("#apiTest").append("<p>" + data[0].stop_ID + "</p>");
+        		//alert(data);
+        	}
+        );*/
+        
     },
     // Bind Event Listeners
     //
@@ -34,6 +76,28 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        
+        
+        //var url = 'http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations';
+        //var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+        
+        
+
+	    /*jQuery(document).ready(function() {
+	        $.getJSON(flickerAPI, {
+		        tags: "pizza",
+		        format: "json"
+	        })
+	        .done(function( data ) {
+			    $.each( data.items, function( i, item ) {
+			      $( "<img/>" ).attr( "src", item.media.m ).appendTo( "#images" );
+			      if ( i === 3 ) {
+			        return false;
+			      }
+			    });
+			});
+		});*/
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -47,3 +111,12 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+function onFileSystemSuccess(fileSystem) {
+    alert(fileSystem.name);
+    alert(fileSystem.root.name);
+}
+
+function fail(evt) {
+    alert(evt.target.error.code);
+}
