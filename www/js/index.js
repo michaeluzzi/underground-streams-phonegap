@@ -19,6 +19,9 @@
  
 var jsonObj = {};
 
+var pictureSource;   // picture source
+var destinationType; // sets the format of returned value
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -39,6 +42,9 @@ var app = {
         app.receivedEvent('deviceready');
         
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemFail);
+        
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
         
         navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError);
         
@@ -96,7 +102,7 @@ var onPositionSuccess = function(position) {
     );
     
     // camera
-    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50/*,
+    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI/*,
     	destinationType: Camera.DestinationType.DATA_URL*/
 	});
     
@@ -113,7 +119,8 @@ function onPositionError(error) {
 
 function onCameraSuccess(imageData) {
     var image = document.getElementById('myImage');
-    image.src = "data:image/jpeg;base64," + imageData;
+    //image.src = "data:image/jpeg;base64," + imageData;
+    image.src = imageData;
 }
 
 function onCameraFail(message) {
