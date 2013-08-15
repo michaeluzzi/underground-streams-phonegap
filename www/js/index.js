@@ -129,13 +129,43 @@ function onCameraSuccess(imageData) {
     image.style.display = 'block';
     image.src = "data:image/jpeg;base64," + imageData;
     //image.src = imageData;
+    uploadFile(imageData);
 }
 
 function onCameraFail(message) {
    	alert('Failed because: ' + message);
 }
 
+// Upload files to server
+function uploadFile(mediaFile) {
+    path = mediaFile.fullPath;
+    name = mediaFile.name;
+    
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=mediaFile.name;
+    options.mimeType="image/jpeg";
 
+    var params = new Object();
+    params.fullpath = path;
+    params.name = name;
+
+    options.params = params;
+    options.chunkedMode = false;
+    
+    var ft = new FileTransfer();
+    ft.upload( path, "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent",
+        function(result) {
+			//upload successful
+			alert("upload success");           
+        },
+        function(error) {
+            //upload unsuccessful, error occured while upload. 
+            alert("upload fail");
+        },
+        options
+        );
+}
 
 
 function onFileSystemSuccess(fileSystem) {
