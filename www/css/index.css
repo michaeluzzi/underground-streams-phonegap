@@ -1,115 +1,179 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-* {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+html{
+    background: #232323;
 }
-
 body {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    text-transform:uppercase;
-    width:100%;
+  /*background-attachment:fixed;
+  font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-size:12px;
+  height:100%;
+  margin:0px;
+  padding:0px;
+  text-transform:uppercase;
+  /*width:100%;*/   
+  text-fill-color: white;
+  height: 100%;
+  background-color: black;
+  color:white;
+  
+}
+.navbar-inner {
+  background: #7d7e7d; /* Old browsers */
+	background: -moz-linear-gradient(top, #7d7e7d 0%, #0e0e0e 57%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(57%,#0e0e0e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #7d7e7d 0%,#0e0e0e 57%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #7d7e7d 0%,#0e0e0e 57%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #7d7e7d 0%,#0e0e0e 57%); /* IE10+ */
+	background: linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 57%); /* W3C */
 }
 
-/* Portrait layout (default) */
-.app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+.navbar-inner h2 {
+  text-align: center;
+  color: white;
 }
 
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
+.navbar #button-list {
+  position: absolute;
+  left:20px;
+}
+.navbar #button-settings {
+  position: absolute;
+  right:20px;
+}
+.sub-heading {
+  text-align: center;
+  color:white;
+}
+/*
+.lower-buttons {
+  position: center;
+}
+*/
+
+.bottom-buttons a {
+	float: left;
+	display: inline;
+	width: 25%;
+/* 	position: center; */
+}
+/*
+.bottom-buttons img {
+	margin: 0px;
+	width:25%;
+	
+}
+*/
+
+/*
+.content-img {
+  padding-right:10px;
+  padding-left: 10px;
+}
+*/
+
+/* Lower Navbar icons */
+.icon {
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
 }
 
-h1 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
+/*
+.menuLink {
+	font-size: 20px;
+	text-transform: uppercase;
+}
+*/
+.storiesLink {
+	left: 25%;
+	text-decoration: none;
+}
+.storeiesLink a:hover{text-decoration: none;}
+.menuLink {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+/* 	width: 200px; */
+
+/* 	padding-top: 70px; */
+/* 	margin-top: -5px; */
+/* 	position: absolute; */
+	top: 0;
+/* 	background: url(../images/dot.png) top center no-repeat; */
+
+}
+.menuLink a:hover {text-decoration:none;}
+.menuLabel {
+	color: white;
+	-webkit-font-smoothing: antialiased;
 }
 
-.event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
-    font-size:12px;
-    margin:0px 30px;
-    padding:2px 0px;
+/****************trying to add color lines to challenge page ************/
+#redline {
+    position: relative;
+/*     font-size: 45px; */
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+    margin:30px 0 15px;
 }
 
-.event.listening {
-    background-color:#333333;
-    display:block;
+/* Add white line right */
+#redline:before, #redline:after {
+    position: absolute;
+    top: 20%;
+    overflow: hidden;
+    width: 48%;
+    height: 20px;
+    content: '\a0';
+    background-color: #fc2323;
 }
+#redline:before {
+    margin-left: -50%;
+    text-align: right;
+}
+#redline:after {
+    margin-left: 2%;
+}
+h2,h3 {
+    font-size: 30px;
+    text-align: center;
+}
+.content-background {
+	background: black;
+}
+.content-background h1,h2,p {
+	color: white;
+}
+.content-background h3 {
+	color: white;
+}
+.ui-body-c, .ui-overlay-c { background:black; }
+.buttonWhite{
+	color:white;
+}
+.red {
+	background: #C12036;
+}
+.blue {
+	background: #25A6BB;
+}
+.theLine{
+	height: 20px;
+	width: 100%;
+	margin-bottom: 20px;
+}
+.line{
+	margin-bottom: 20px;
+}
+.iconLink {	
+/* 	display: block; */
+/* 	text-align: center; */
+/* 	width: 200px; */
+	padding-top: 40px;
+	margin-top: -5px;
+/* 	position: absolute; */
+/* 	top: 0; */
 
-.event.received {
-    background-color:#4B946A;
-    display:none;
-}
-
-@keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-@-webkit-keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-.blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
+	background: url(../images/doticon.png) top center no-repeat;
 }
