@@ -119,7 +119,8 @@ function onPositionError(error) {
 
 function launchCamera() {
 	navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
-    	destinationType: destinationType.DATA_URL
+		destinationType: destinationType.FILE_URI
+    	//destinationType: destinationType.DATA_URL
 	});
 }
 
