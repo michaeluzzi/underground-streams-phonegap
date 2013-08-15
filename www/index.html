@@ -46,410 +46,425 @@
             <!-- Start of first page: #main -->
 			<div data-role="page" id="main">
 	
-			<div data-role="header">
-				<h3>Underground Streams</h3>
-				<!-- <a href="#login" data-role="button" class="pull-right buttonWhite">Login</a> -->
-				<a href="#login" class="btn btn-inverse" style="margin-top: 5px; margin-left: 10px;">Login</a>
-			</div><!-- /header -->
+				<div data-role="header">
+					<h3>Underground Streams</h3>
+					<!-- <a href="#login" data-role="button" class="pull-right buttonWhite">Login</a> -->
+					<a href="#login" class="btn btn-inverse" style="margin-top: 5px; margin-left: 10px;">Login</a>
+				</div><!-- /header -->
 		
-			<div data-role="content" class="content-background">
-				<div class="line">
-					<div class="theLine red"><div class="iconLink"></div></div>
-					<a href="#challenge" data-transition="fade" class="menuLink storiesLink">
-						<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-						<span class="menuLabel">Challenge</span>
-					</a>
+				<div data-role="content" class="content-background">
+					<div class="line">
+						<div class="theLine red"><div class="iconLink"></div></div>
+						<a href="#challenge" data-transition="fade" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">Challenge</span>
+						</a>
+					</div>
+					<div class="line">
+						<div class="theLine blue"><div class="iconLink"></div></div>
+						<a href="#streams" class="menuLink storiesLink">
+							<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Streams</span>
+						</a>
+					</div>
 				</div>
-				<div class="line">
-					<div class="theLine blue"><div class="iconLink"></div></div>
-					<a href="#streams" class="menuLink storiesLink">
-						<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-						<span class="menuLabel">Streams</span>
-					</a>
+		
+				<div data-role="footer" data-position="fixed">
+					<img src="img/logo.png" width="100%">
 				</div>
 			</div>
-		
-			<div data-role="footer" data-position="fixed">
-				<img src="img/logo.png" width="100%">
-			</div>
-		</div>
 
 
 <!-- ***************************** Start of Underground Streams *************************** -->
 
 
-<!-- Challenge User Experience -->
-<div data-role="page" id="challenge">
-	<div data-role="header">
-		<h3>Challenge</h3>
-<!-- 		<a href="#login" data-role="button" class="pull-right" sytle="margin-top: 20px;">Login</a> -->
-		<a href="#login" class="btn btn-inverse" style="margin-top: 5px; margin-left: 10px;">Login</a>
-	</div><!-- /header -->
+			<!-- Challenge Landing Page -->
+			<div data-role="page" id="challenge">
+				<div data-role="header">
+					<h3>Challenge</h3>
+					<!-- <a href="#login" data-role="button" class="pull-right" sytle="margin-top: 20px;">Login</a> -->
+					<a href="#login" class="btn btn-inverse" style="margin-top: 5px; margin-left: 10px;">Login</a>
+				</div><!-- /header -->
 
-	<div data-role="content" class="content-background">	
-		<a href="#myentries" data-transition="fade"  class="menuLink storiesLink">
-			<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-			<span class="menuLabel">Browse</span>
-		</a>									
-		<a href="#myentries" data-transition="fade"  class="menuLink storiesLink">
-			<div class="icon"><img src="img/icon-camera.png" class="pull-left"></div>
-			<span class="menuLabel">Shoot</span>
-		</a>							
-		<a href="#myentries" data-transition="fade"  class="menuLink storiesLink">
-			<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-			<span class="menuLabel">My Entries</span>
-		</a>									
+				<div data-role="content" class="content-background">	
+					<a href="#myentries" data-transition="fade"  class="menuLink storiesLink">
+						<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+						<span class="menuLabel">Browse</span>
+					</a>
+					<button onclick="launchCamera()">								
+						<a href="#myentries" data-transition="fade"  class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-camera.png" class="pull-left"></div>
+							<span class="menuLabel">Camera</span>
+						</a>
+					</button>							
+					<a href="#myentries" data-transition="fade"  class="menuLink storiesLink">
+						<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+						<span class="menuLabel">My Entries</span>
+					</a>									
 	
 	
-		<h1>THIS WEEKS CHALLENGE IS:</h1>
-		<p>Title of Challenge</p>
+					<h1>THIS WEEKS CHALLENGE IS:</h1>
+					<p>Title of Challenge</p>
 
-	</div><!-- /content -->
+				</div><!-- /content -->
 	
-	<div data-role="footer" data-position="fixed" class="info-button-bottom">
-		<a href="#weekly-challenge" data-role="button" data-icon="info" class="buttonWhite">Info</a>
-	</div><!-- /footer -->
-</div>
-
-<!-- Challenge User Experience -->
-<div data-role="page" id="weekly-challenge">
-	<div data-role="header">
-		<h3>Weekly Challenge</h3>
-	</div><!-- /header -->
-
-	<div data-role="content" class="content-background">	
-		<h1>Challenge</h1>
-		<p> Go and act silly on the train</p>
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-position="fixed">
-		<a href="#main" data-role="button" class="buttonWhite">OK</a>
-	</div><!-- /footer -->
-</div>
-
-
-
-<!-- Start of page: /stories -->
-<div data-role="page" id="streams">
-	<div data-role="header">
-<!-- 		<a href="index.html" data-icon="delete" style="margin-top: 10px">List</a> -->
-		<a href="#main" class="btn btn-inverse" style="margin-top: 7px; margin-left: 10px;"><i class="icon-white icon-align-justify"></i></a>
-		<h1>Streams</h1>
-<!-- 		<a href="index.html" data-icon="gear">Settings</a> -->
-		<a href="#main" class="btn btn-inverse" style="margin-top: 7px; margin-right: 10px;"><i class="icon-white icon-cog"></i></a>
-	</div><!-- /header -->
-
-	<div data-role="content" class="content-background">	
-		<h1>FAVORITES</h1>
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-position="fixed">
-		<div class="bottom-buttons">
-			<a href="#streams" class="menuLink storiesLink">
-				<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Stories</span>
-			</a>
-			<a href="#browse" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">Browse</span>
-			</a>
-			<a href="#participate" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Participate</span>
-			</a>
-			<a href="#myentries" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">My Entries</span>
-			</a>									
-		</div>
-	</div><!-- /footer -->
-</div>
-
-
-
-<!-- Start of page: /browse -->
-<div data-role="page" id="browse">
-	<div data-role="header">
-		<h1>Browse</h1>
-	</div><!-- /header -->
-
-	<div data-role="content" class="content-background">	
-
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-position="fixed">
-		<div class="bottom-buttons">
-			<a href="#streams" class="menuLink storiesLink">
-				<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Stories</span>
-			</a>
-			<a href="#browse" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">Browse</span>
-			</a>
-			<a href="#participate" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Participate</span>
-			</a>
-			<a href="#myentries" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">My Entries</span>
-			</a>									
-		</div>
-	</div><!-- /footer -->
-</div>
-
-
-
-<!-- Start of page: /participate -->
-<div data-role="page" class="page" id="participate">
-	<div data-role="header">
-		<h1>Participate</h1>
-	</div><!-- /header -->
-
-	<div data-role="content" class="content-background">	
-		<h3>"TAKE PICTURES OF WILDLIFE"</h3>
-		<a href="#participate-submit" class="btn btn-inverse" style="margin-top: 7px; margin-right: 10px;">PHOTO<i class="icon-white icon-cog"></i></a>
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-position="fixed">
-		<div class="bottom-buttons">
-			<a href="#streams" class="menuLink storiesLink">
-				<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Stories</span>
-			</a>
-			<a href="#browse" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">Browse</span>
-			</a>
-			<a href="#participate" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Participate</span>
-			</a>
-			<a href="#myentries" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">My Entries</span>
-			</a>									
-		</div>
-	</div><!-- /footer -->
-</div>
-<!-- Start of page: /participate -->
-<div data-role="page" class="page" id="participate-submit">
-	<div data-role="header">
-		<h1>Participate</h1>
-	</div><!-- /header -->
-
-	<div data-role="content" class="content-background">	
-		<img src="images/train.png">
-		<form>
-		     <input type="text" class="form-control" name="text-3" id="text-3" value="" placeholder="Add your title">
-		</form>
-
-		<form>
-		     <input type="text" class="form-conrtol" name="text-3" id="text-3" value="" placeholder="What station did you get on at?">
-		</form>
-		<a href="#myentries" class="btn btn-inverse">Submit</a>
-		<a href="#participate" class="btn btn-inverse">Cancel</a>
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-position="fixed">
-
-	</div><!-- /footer -->
-</div>
-
-
-<!-- Start of page: /myentries -->
-<div data-role="page" class="page" id="myentries">
-	<div data-role="header">
-		<h1>My Entries</h1>
-	</div><!-- /header -->
-
-	<div data-role="content" class="content-background">	
-		<h3>MY UNDERGROUND STREAMS GALLERY</h3>
-		
-		<div class="container">
-			<div class="span3">
-				<img src="images/train.png" width="20%">
-				<h3>Title</h3>
-				<p>Comments</p>
-				<img src="images/lines/1.png">
+				<div data-role="footer" data-position="fixed" class="info-button-bottom">
+					<a href="#weekly-challenge" data-role="button" data-icon="info" class="buttonWhite">Info</a>
+				</div><!-- /footer -->
 			</div>
-			<div class="span3">
-				<img src="" width="20%">
-				<h3>Title</h3>
-				<p>Comments</p>
-				<img src="images/lines/1.png">
-			</div>
-			<div class="span3">
-				<img src="" width="20%">
-				<h3>Title</h3>
-				<p>Comments</p>
-				<img src="images/lines/1.png">
-			</div>	
-		</div>
-		
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-position="fixed">
-		<div class="bottom-buttons">
-			<a href="#streams" class="menuLink storiesLink">
-				<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Stories</span>
-			</a>
-			<a href="#browse" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">Browse</span>
-			</a>
-			<a href="#participate" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Participate</span>
-			</a>
-			<a href="#myentries" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">My Entries</span>
-			</a>									
-		</div>
-	</div><!-- /footer -->
-</div>
-<!-- Start of page: /myentries -->
-<div data-role="page" class="page" id="myentries-individual">
-	<div data-role="header">
-		<h1>My Entries</h1>
-	</div><!-- /header -->
+			
+			
+			<!-- <div data-role="page" id="camera">
+				<div data
+			</div> -->
 
-	<div data-role="content" class="content-background">	
-		<h3>Individual Photo</h3>
-		
-		<div class="container">
-			<div class="span3">
-				<img src="images/train.png" width="20%">
-				<h3>Title</h3>
-				<p>Comments</p>
-				<img src="images/lines/1.png">
-			</div>
-		</div>
-		
-	</div><!-- /content -->
+			
+			<!-- Weekly Challenge -->
+			<div data-role="page" id="weekly-challenge">
+				<div data-role="header">
+					<h3>Weekly Challenge</h3>
+				</div><!-- /header -->
+
+				<div data-role="content" class="content-background">	
+					<h1>Challenge</h1>
+					<p> Go and act silly on the train</p>
+				</div><!-- /content -->
 	
-	<div data-role="footer" data-position="fixed">
-		<div class="bottom-buttons">
-			<a href="#streams" class="menuLink storiesLink">
-				<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Stories</span>
-			</a>
-			<a href="#browse" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">Browse</span>
-			</a>
-			<a href="#participate" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
-				<span class="menuLabel">Participate</span>
-			</a>
-			<a href="#myentries" class="menuLink storiesLink">
-				<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
-				<span class="menuLabel">My Entries</span>
-			</a>									
+				<div data-role="footer" data-position="fixed">
+					<a href="#main" data-role="button" class="buttonWhite">OK</a>
+				</div><!-- /footer -->
+			</div>
+
+
+
+			<!-- Start of page: /stories -->
+			<div data-role="page" id="streams">
+				<div data-role="header">
+					<!-- <a href="index.html" data-icon="delete" style="margin-top: 10px">List</a> -->
+					<a href="#main" class="btn btn-inverse" style="margin-top: 7px; margin-left: 10px;"><i class="icon-white icon-align-justify"></i></a>
+					<h1>Streams</h1>
+					<!-- <a href="index.html" data-icon="gear">Settings</a> -->
+					<a href="#main" class="btn btn-inverse" style="margin-top: 7px; margin-right: 10px;"><i class="icon-white icon-cog"></i></a>
+				</div><!-- /header -->
+
+				<div data-role="content" class="content-background">	
+					<h1>FAVORITES</h1>
+				</div><!-- /content -->
+	
+				<div data-role="footer" data-position="fixed">
+					<div class="bottom-buttons">
+						<a href="#streams" class="menuLink storiesLink">
+							<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Stories</span>
+						</a>
+						<a href="#browse" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">Browse</span>
+						</a>
+						<a href="#participate" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Participate</span>
+						</a>
+						<a href="#myentries" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">My Entries</span>
+						</a>									
+					</div>
+				</div><!-- /footer -->
+			</div>
+
+
+
+			<!-- Start of page: /browse -->
+			<div data-role="page" id="browse">
+				<div data-role="header">
+					<h1>Browse</h1>
+				</div><!-- /header -->
+
+				<div data-role="content" class="content-background">	
+
+				</div><!-- /content -->
+	
+				<div data-role="footer" data-position="fixed">
+					<div class="bottom-buttons">
+						<a href="#streams" class="menuLink storiesLink">
+							<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Stories</span>
+						</a>
+						<a href="#browse" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">Browse</span>
+						</a>
+						<a href="#participate" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Participate</span>
+						</a>
+						<a href="#myentries" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">My Entries</span>
+						</a>									
+					</div>
+				</div><!-- /footer -->
+			</div>
+
+
+
+			<!-- Start of page: /participate -->
+			<div data-role="page" class="page" id="participate">
+				<div data-role="header">
+					<h1>Participate</h1>
+				</div><!-- /header -->
+
+				<div data-role="content" class="content-background">	
+					<h3>"TAKE PICTURES OF WILDLIFE"</h3>
+					<a href="#participate-submit" class="btn btn-inverse" style="margin-top: 7px; margin-right: 10px;">PHOTO<i class="icon-white icon-cog"></i></a>
+				</div><!-- /content -->
+	
+				<div data-role="footer" data-position="fixed">
+					<div class="bottom-buttons">
+						<a href="#streams" class="menuLink storiesLink">
+							<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Stories</span>
+						</a>
+						<a href="#browse" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">Browse</span>
+						</a>
+						<a href="#participate" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Participate</span>
+						</a>
+						<a href="#myentries" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">My Entries</span>
+						</a>									
+					</div>
+				</div><!-- /footer -->
+			</div>
+
+
+			<!-- Start of page: /participate -->
+			<div data-role="page" class="page" id="participate-submit">
+				<div data-role="header">
+					<h1>Participate</h1>
+				</div><!-- /header -->
+
+				<div data-role="content" class="content-background">	
+					<img src="images/train.png">
+					<form>
+		     			<input type="text" class="form-control" name="text-3" id="text-3" value="" placeholder="Add your title">
+					</form>
+
+					<form>
+		     			<input type="text" class="form-conrtol" name="text-3" id="text-3" value="" placeholder="What station did you get on at?">
+					</form>
+					<a href="#myentries" class="btn btn-inverse">Submit</a>
+					<a href="#participate" class="btn btn-inverse">Cancel</a>
+				</div><!-- /content -->
+	
+				<div data-role="footer" data-position="fixed">
+
+				</div><!-- /footer -->
+			</div>
+
+
+			<!-- Start of page: /myentries -->
+			<div data-role="page" class="page" id="myentries">
+				<div data-role="header">
+					<h1>My Entries</h1>
+				</div><!-- /header -->
+
+				<div data-role="content" class="content-background">	
+					<h3>MY UNDERGROUND STREAMS GALLERY</h3>
+		
+					<div class="container">
+						<div class="span3">
+							<img src="images/train.png" width="20%">
+							<h3>Title</h3>
+							<p>Comments</p>
+							<img src="images/lines/1.png">
+						</div>
+						<div class="span3">
+							<img src="" width="20%">
+							<h3>Title</h3>
+							<p>Comments</p>
+							<img src="images/lines/1.png">
+						</div>
+						<div class="span3">
+							<img src="" width="20%">
+							<h3>Title</h3>
+							<p>Comments</p>
+							<img src="images/lines/1.png">
+						</div>	
+					</div>
+		
+				</div><!-- /content -->
+	
+				<div data-role="footer" data-position="fixed">
+					<div class="bottom-buttons">
+						<a href="#streams" class="menuLink storiesLink">
+							<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Stories</span>
+						</a>
+						<a href="#browse" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">Browse</span>
+						</a>
+						<a href="#participate" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Participate</span>
+						</a>
+						<a href="#myentries" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">My Entries</span>
+						</a>									
+					</div>
+				</div><!-- /footer -->
+			</div>
+
+
+			<!-- Start of page: /myentries -->
+			<div data-role="page" class="page" id="myentries-individual">
+				<div data-role="header">
+					<h1>My Entries</h1>
+				</div><!-- /header -->
+
+				<div data-role="content" class="content-background">	
+					<h3>Individual Photo</h3>
+		
+					<div class="container">
+						<div class="span3">
+							<img src="images/train.png" width="20%">
+							<h3>Title</h3>
+							<p>Comments</p>
+							<img src="images/lines/1.png">
+					</div>
+				</div>
+		
+			</div><!-- /content -->
+	
+			<div data-role="footer" data-position="fixed">
+				<div class="bottom-buttons">
+					<a href="#streams" class="menuLink storiesLink">
+						<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+						<span class="menuLabel">Stories</span>
+					</a>
+					<a href="#browse" class="menuLink storiesLink">
+						<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+						<span class="menuLabel">Browse</span>
+					</a>
+					<a href="#participate" class="menuLink storiesLink">
+						<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+						<span class="menuLabel">Participate</span>
+					</a>
+					<a href="#myentries" class="menuLink storiesLink">
+						<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+						<span class="menuLabel">My Entries</span>
+					</a>									
+				</div>
+			</div><!-- /footer -->
 		</div>
-	</div><!-- /footer -->
-</div>
 
 <!--************************************************ Sign up Page  ********************************************* -->
-<!-- Start of page: /Login -->
-<div data-role="page" id="login">
-	<div data-role="header">
-		<h1>Login</h1>
-	</div><!-- /header -->
+		<!-- Start of page: /Login -->
+		<div data-role="page" id="login">
+			<div data-role="header">
+				<h1>Login</h1>
+			</div><!-- /header -->
 
-	<div data-role="content" data-theme="a">	
-		<form>
-		     <label for="text-3">Username</label>
-		     <input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
-		</form>
+			<div data-role="content" data-theme="a">	
+				<form>
+		     		<label for="text-3">Username</label>
+		     		<input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
+				</form>
 
-		<form>
-		     <label for="text-3">Password</label>
-		     <input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
-		</form>
-		<a href="#main" data-role="button">Submit</a>
+				<form>
+		     		<label for="text-3">Password</label>
+		     		<input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
+				</form>
+				<a href="#main" data-role="button">Submit</a>
 		
-		<p style="text-align: center;">Forgot your password?</p>
+				<p style="text-align: center;">Forgot your password?</p>
 
-		<br>
-		<p style="text-align: center;">Don't have an account?</p>
-		<a href="#signup1" data-role="button">Sign Up</a>
-	</div><!-- /content -->
+				<br>
+				<p style="text-align: center;">Don't have an account?</p>
+				<a href="#signup1" data-role="button">Sign Up</a>
+			</div><!-- /content -->
 	
-	<div data-role="footer" data-position="fixed">
-		<a href="#main" data-role="button">Back</a>
-	</div><!-- /footer -->
-</div>
+			<div data-role="footer" data-position="fixed">
+				<a href="#main" data-role="button">Back</a>
+			</div><!-- /footer -->
+		</div>
 
-<!-- Start of page: /Login -->
-<div data-role="page" id="signup1">
-	<div data-role="header">
-		<h1>Sign Up</h1>
-	</div><!-- /header -->
+		<!-- Start of page: /Login -->
+			<div data-role="page" id="signup1">
+				<div data-role="header">
+					<h1>Sign Up</h1>
+				</div><!-- /header -->
 
-	<div data-role="content" data-theme="a">	
-		<form>
-		     <label for="text-3">Username</label>
-		     <input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
-		</form>
-		<form>
-		     <label for="text-3">Password</label>
-		     <input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
-		</form>
-		<form>
-		     <label for="text-3">Verify Password</label>
-		     <input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
-		</form>
-		<form>
-		     <label for="text-3">Email</label>
-		     <input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
-		</form>
-	</div><!-- /content -->
+				<div data-role="content" data-theme="a">	
+					<form>
+		     			<label for="text-3">Username</label>
+		     			<input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
+					</form>
+					<form>
+		     			<label for="text-3">Password</label>
+		     			<input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
+					</form>
+					<form>
+		     			<label for="text-3">Verify Password</label>
+		     			<input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
+					</form>
+					<form>
+		     			<label for="text-3">Email</label>
+		     			<input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
+					</form>
+				</div><!-- /content -->
 	
-	<div data-role="footer" data-position="fixed">
-		<a href="#signup2" data-role="button">Submit</a>
-		<a href="#main" data-role="button">Cancel</a>
-	</div><!-- /footer -->
-</div>
-<!-- Start of page: /Login -->
-<div data-role="page" id="signup2">
-	<div data-role="header">
-		<h1>Sign Up</h1>
-	</div><!-- /header -->
+				<div data-role="footer" data-position="fixed">
+					<a href="#signup2" data-role="button">Submit</a>
+					<a href="#main" data-role="button">Cancel</a>
+				</div><!-- /footer -->
+			</div>
 
-	<div data-role="content" data-theme="a">	
-		<p>Select your favorite subway lines</p>
-		<br>
-		<p>Enter your favorite stations</p>
-		<form>
-		     <label for="text-3">Email</label>
-		     <input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
-		</form>
-	</div><!-- /content -->
-	
-	<div data-role="footer" data-position="fixed">
-		<a href="#signup3" data-role="button">Finish</a>
-	</div><!-- /footer -->
-</div>
-<!-- Start of page: /Login -->
-<div data-role="page" id="signup3">
-	<div data-role="header">
-		<h1>Sign Up</h1>
-	</div><!-- /header -->
 
-	<div data-role="content" data-theme="a">	
-		<h1>Congrats!</h1>
-		<p>Archana, welcome to Underground Streams.  View entries from you favorite subway lines and stations below.</p>
-	</div><!-- /content -->
+			<!-- Start of page: /Login -->
+			<div data-role="page" id="signup2">
+				<div data-role="header">
+					<h1>Sign Up</h1>
+				</div><!-- /header -->
+
+				<div data-role="content" data-theme="a">	
+					<p>Select your favorite subway lines</p>
+					<br>
+					<p>Enter your favorite stations</p>
+					<form>
+		     			<label for="text-3">Email</label>
+		     			<input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
+					</form>
+				</div><!-- /content -->
 	
-	<div data-role="footer" data-position="fixed">
-		<a href="#main" data-role="button">OK</a>
-	</div><!-- /footer -->
-</div>
-<!-- End of Signup -->        
+				<div data-role="footer" data-position="fixed">
+					<a href="#signup3" data-role="button">Finish</a>
+				</div><!-- /footer -->
+			</div>
+
+
+			<!-- Start of page: /Login -->
+			<div data-role="page" id="signup3">
+				<div data-role="header">
+					<h1>Sign Up</h1>
+				</div><!-- /header -->
+
+				<div data-role="content" data-theme="a">	
+					<h1>Congrats!</h1>
+					<p>Archana, welcome to Underground Streams.  View entries from you favorite subway lines and stations below.</p>
+				</div><!-- /content -->
+	
+				<div data-role="footer" data-position="fixed">
+					<a href="#main" data-role="button">OK</a>
+				</div><!-- /footer -->
+			</div><!-- End of Signup -->        
         </div>
         
         <!-- Scripts  -->
@@ -464,8 +479,8 @@
         <script type="text/javascript">
             app.initialize();
         </script>
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
         	alert("loaded");
-        </script>
+        </script> -->
     </body>
 </html>

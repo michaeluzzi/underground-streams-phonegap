@@ -117,8 +117,14 @@ function onPositionError(error) {
           'message: ' + error.message + '\n');
 }
 
+function launchCamera() {
+	navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
+    	destinationType: destinationType.DATA_URL
+	});
+}
 
-/*function onCameraSuccess(imageData) {
+
+function onCameraSuccess(imageData) {
     var image = document.getElementById('myImage');
     image.style.display = 'block';
     image.src = "data:image/jpeg;base64," + imageData;
@@ -127,7 +133,7 @@ function onPositionError(error) {
 
 function onCameraFail(message) {
    	alert('Failed because: ' + message);
-}*/
+}
 
 
 
