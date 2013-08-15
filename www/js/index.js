@@ -118,10 +118,12 @@ function onPositionError(error) {
 }
 
 function launchCamera() {
-	navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
-		destinationType: destinationType.FILE_URI
-    	//destinationType: destinationType.DATA_URL
-	});
+	/*navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
+    	destinationType: destinationType.DATA_URL
+	});*/
+	
+	navigator.device.capture.captureImage(captureSuccess, captureError, { limit: 1 });
+	
 }
 
 
@@ -135,6 +137,19 @@ function onCameraSuccess(imageData) {
 
 function onCameraFail(message) {
    	alert('Failed because: ' + message);
+}
+
+// Called when capture operation is finished
+//
+function captureSuccess(mediaFiles) {    
+    uploadFile(mediaFiles[0]);
+}
+
+// Called if something bad happens.
+//
+function captureError(error) {
+    var msg = 'An error occurred during capture: ' + error.code;
+    navigator.notification.alert(msg, null, 'Uh oh!');
 }
 
 // Upload files to server
