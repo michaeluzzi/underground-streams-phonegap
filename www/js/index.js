@@ -40,7 +40,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        //app.receivedEvent('deviceready');
         
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemFail);
         
@@ -85,13 +85,13 @@ var onPositionSuccess = function(position) {
         function(nearbyStations) {
         	//alert(data);
         	jsonObj.nearbyStations = nearbyStations;
-        	//alert(jsonObj.nearbyStations[0].STOP_NAME);
+        	alert(jsonObj.nearbyStations[0].STOP_NAME);
         	for (var i=0; i<jsonObj.nearbyStations.length; i++)
 			{
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
 				$.getJSON(url,
 					function(stationContent) {
-						$("#apiTest").append("<p>" + stationContent + "</p>");
+						//$("#apiTest").append("<p>" + stationContent + "</p>");
 							
 							
 							
@@ -103,9 +103,9 @@ var onPositionSuccess = function(position) {
     );
     
     // camera
-    navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
+    /*navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
     	destinationType: destinationType.DATA_URL
-	});
+	});*/
     
     
 };
@@ -118,7 +118,7 @@ function onPositionError(error) {
 }
 
 
-function onCameraSuccess(imageData) {
+/*function onCameraSuccess(imageData) {
     var image = document.getElementById('myImage');
     image.style.display = 'block';
     image.src = "data:image/jpeg;base64," + imageData;
@@ -127,13 +127,13 @@ function onCameraSuccess(imageData) {
 
 function onCameraFail(message) {
    	alert('Failed because: ' + message);
-}
+}*/
 
 
 
 
 function onFileSystemSuccess(fileSystem) {
-	$("#apiTest").append("<p>fs success</p>");
+	//$("#apiTest").append("<p>fs success</p>");
     alert(fileSystem.name);
     alert(fileSystem.root.name);
 }
