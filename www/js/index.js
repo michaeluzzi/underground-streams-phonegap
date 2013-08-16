@@ -146,10 +146,9 @@ function captureSuccess(mediaFiles) {
     //uploadFile(mediaFiles[0]);
     //alert("capture success")
     //alert(window.location.hash);
-    var entry = fs.root;
-    var usFolder = entry.getDirectory("underground-streams-test", {create: true, exclusive: true}, onGetDirectorySuccess, onGetDirectoryFail);
-    alert(usFoler.name);
-    //mediaFiles[0].moveTo(
+    var folderName = fs.root.name + "/underground-streams-test";
+    //entry.getDirectory("underground-streams-test", {create: true, exclusive: true}, moveFile, onGetDirectoryFail);
+    mediaFiles[0].moveTo(folderName, onFileMoveSuccess, onFileMoveFail);
     window.location.hash = "#participate-submit";
     //alert(window.location.hash);
 }
@@ -216,4 +215,14 @@ function onGetDirectoryFail(error) {
      {
      	alert("file path already exists");
      }
-} 
+}
+
+function onFileMoveSuccess(entry) {
+    alert("New Path: " + entry.fullPath);
+}
+
+function onFileMoveSuccess(error) {
+    alert(error.code);
+}
+
+
