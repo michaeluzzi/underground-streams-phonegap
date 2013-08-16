@@ -147,7 +147,9 @@ function captureSuccess(mediaFiles) {
     //alert("capture success")
     //alert(window.location.hash);
     var entry = fs.root;
-    entry.getDirectory("underground-streams-test", {create: true, exclusive: true}, onGetDirectorySuccess, onGetDirectoryFail);
+    var usFolder = entry.getDirectory("underground-streams-test", {create: true, exclusive: true}, onGetDirectorySuccess, onGetDirectoryFail);
+    alert(usFoler.name);
+    //mediaFiles[0].moveTo(
     window.location.hash = "#participate-submit";
     //alert(window.location.hash);
 }
@@ -194,6 +196,8 @@ function uploadFile(mediaFile) {
 function onFileSystemSuccess(fileSystem) {
 	//$("#apiTest").append("<p>fs success</p>");
 	fs = fileSystem;
+	var entry = fs.root;
+    entry.getDirectory("underground-streams-test", {create: true, exclusive: true}, onGetDirectorySuccess, onGetDirectoryFail);
     alert(fileSystem.name);
     alert(fileSystem.root.name);
 }
@@ -207,5 +211,9 @@ function onGetDirectorySuccess(dir) {
 } 
 
 function onGetDirectoryFail(error) { 
-     alert("Error creating directory "+error.code); 
+     alert("Error creating directory "+error.code);
+     if (error.code == 12)
+     {
+     	alert("file path already exists");
+     }
 } 
