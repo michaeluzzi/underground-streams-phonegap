@@ -147,7 +147,7 @@ function captureSuccess(mediaFiles) {
     //alert("capture success")
     //alert(window.location.hash);
     var entry = fs.root;
-    entry.getDirectory("underground-streams-test", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
+    entry.getDirectory("underground-streams-test", {create: true, exclusive: true}, onGetDirectorySuccess, onGetDirectoryFail);
     window.location.hash = "#participate-submit";
     //alert(window.location.hash);
 }
