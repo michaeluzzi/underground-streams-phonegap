@@ -135,7 +135,7 @@ function onCameraSuccess(imageURI) {
     var image = document.getElementById('previewImg');
     image.style.display = 'block';
     //image.src = "data:image/jpeg;base64," + imageData;
-    image.src = imageData;
+    image.src = imageURI;
     window.location.hash = "#participate-submit";
     //uploadFile(imageData);
 }
