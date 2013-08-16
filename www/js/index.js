@@ -21,6 +21,7 @@ var jsonObj = {};
 
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
+var fs; // file system
 
 var app = {
     // Application Constructor
@@ -145,7 +146,7 @@ function captureSuccess(mediaFiles) {
     //uploadFile(mediaFiles[0]);
     //alert("capture success")
     //alert(window.location.hash);
-    var entry = fileSystem.root;
+    var entry = fs.root;
     entry.getDirectory("underground-streams-test", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
     window.location.hash = "#participate-submit";
     //alert(window.location.hash);
@@ -192,6 +193,7 @@ function uploadFile(mediaFile) {
 
 function onFileSystemSuccess(fileSystem) {
 	//$("#apiTest").append("<p>fs success</p>");
+	fs = fileSystem;
     alert(fileSystem.name);
     alert(fileSystem.root.name);
 }
