@@ -227,9 +227,9 @@ function onFileMoveSuccess(error) {
     alert(error.code);
 }
 
-function doNothing() {
+/*function doNothing() {
 	// dummy form
-	window.location.hash = "#participate-submit";
-}
+	//window.location.hash = "#participate-submit";
+}*/
 
 
