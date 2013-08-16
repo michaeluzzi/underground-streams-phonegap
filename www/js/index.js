@@ -145,6 +145,8 @@ function captureSuccess(mediaFiles) {
     //uploadFile(mediaFiles[0]);
     //alert("capture success")
     //alert(window.location.hash);
+    var entry = fileSystem.root;
+    entry.getDirectory("underground-streams-test", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
     window.location.hash = "#participate-submit";
     //alert(window.location.hash);
 }
@@ -197,3 +199,11 @@ function onFileSystemSuccess(fileSystem) {
 function onFileSystemFail(evt) {
     alert(evt.target.error.code);
 }
+
+function onGetDirectorySuccess(dir) { 
+      console.log("Created dir "+dir.name); 
+} 
+
+function onGetDirectoryFail(error) { 
+     console.log("Error creating directory "+error.code); 
+} 
