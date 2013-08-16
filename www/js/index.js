@@ -22,6 +22,7 @@ var jsonObj = {};
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
 var fs; // file system
+var fileToMove; // image to move
 
 var app = {
     // Application Constructor
@@ -230,16 +231,27 @@ function onFileMoveSuccess(entry) {
     alert("New Path: " + entry.fullPath);
 }
 
-function onFileMoveSuccess(error) {
+function onFileMoveFail(error) {
     alert(error.code);
 }
 
 function onResolveSuccess(fileEntry) {
     alert("resolve success: " + fileEntry.fullPath);
+    fileToMove = fileEntry;
+    fs.root.getDirectory("underground-streams-test", {create: true, exclusive: true}, onMoveFile, onMoveFileFail);
+    //fileEntry.moveTo(folderName, onFileMoveSuccess, onFileMoveFail);
 }
 
 function onResolveFail(evt) {
     alert(evt.target.error.code);
+}
+
+function onMoveFile(dir) {
+	fileToMove.moveTo(dir, onFileMoveSuccess, onFileMoveFail);
+}
+
+function onMoveFileFail(error) {
+	alert(error);
 }
 
 
