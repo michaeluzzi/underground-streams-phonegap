@@ -142,7 +142,8 @@ function onCameraFail(message) {
 // Called when capture operation is finished
 //
 function captureSuccess(mediaFiles) {    
-    uploadFile(mediaFiles[0]);
+    //uploadFile(mediaFiles[0]);
+    window.location = "#participate-success";
 }
 
 // Called if something bad happens.
@@ -167,7 +168,7 @@ function uploadFile(mediaFile) {
     params.name = name;
 
     options.params = params;
-    options.chunkedMode = false;
+    options.chunkedMode = true;
     
     var ft = new FileTransfer();
     ft.upload( path, "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent",
