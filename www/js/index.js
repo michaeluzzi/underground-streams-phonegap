@@ -249,8 +249,8 @@ function onResolveFail(evt) {
 }
 
 function onMoveFile(dir) {
-	alert("move file success " + dir.name);
-	fileToMove.moveTo(dir, onFileMoveSuccess, onFileMoveFail);
+	alert("moving file to " + dir.name);
+	fileToMove.moveTo(dir, fileToMove.name, onFileMoveSuccess, onFileMoveFail);
 }
 
 function onMoveFileFail(error) {
