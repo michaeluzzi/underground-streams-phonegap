@@ -22,6 +22,7 @@ var jsonObj = {};
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
 var fs; // file system
+var uri;
 var fileToMove; // image to move
 
 var app = {
@@ -137,6 +138,7 @@ function onCameraSuccess(imageURI) {
     image.style.display = 'block';
     //image.src = "data:image/jpeg;base64," + imageData;
     image.src = imageURI;
+    uri = imageURI;
     //window.resolveLocalFileSystemURI(imageURI, onResolveSuccess, onResolveFail);
     window.location.hash = "#participate-submit";
     //uploadFile(imageData);
@@ -167,7 +169,7 @@ function captureError(error) {
 }
 
 function submitPhoto() {
-	window.resolveLocalFileSystemURI(imageURI, onResolveSuccess, onResolveFail);
+	window.resolveLocalFileSystemURI(uri, onResolveSuccess, onResolveFail);
 }
 
 // Upload files to server
