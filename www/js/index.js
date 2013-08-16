@@ -201,9 +201,9 @@ function onFileSystemFail(evt) {
 }
 
 function onGetDirectorySuccess(dir) { 
-      console.log("Created dir "+dir.name); 
+      alert("Created dir "+dir.name); 
 } 
 
 function onGetDirectoryFail(error) { 
-     console.log("Error creating directory "+error.code); 
+     alert("Error creating directory "+error.code); 
 } 
