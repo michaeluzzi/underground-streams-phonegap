@@ -136,6 +136,7 @@ function onCameraSuccess(imageURI) {
     image.style.display = 'block';
     //image.src = "data:image/jpeg;base64," + imageData;
     image.src = imageURI;
+    window.resolveLocalFileSystemURI(imageURI, onResolveSuccess, onResolveFail);
     window.location.hash = "#participate-submit";
     //uploadFile(imageData);
 }
@@ -231,6 +232,14 @@ function onFileMoveSuccess(entry) {
 
 function onFileMoveSuccess(error) {
     alert(error.code);
+}
+
+function onResolveSuccess(fileEntry) {
+    alert("resolve success: " + fileEntry.fullPath);
+}
+
+function onResolveFail(evt) {
+    alert(evt.target.error.code);
 }
 
 
