@@ -227,4 +227,8 @@ function onFileMoveSuccess(error) {
     alert(error.code);
 }
 
+function doNothing() {
+	// dummy form
+}
+
 
