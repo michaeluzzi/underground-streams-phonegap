@@ -119,21 +119,23 @@ function onPositionError(error) {
 }
 
 function launchCamera() {
-	/*navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
+	navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
     	destinationType: destinationType.DATA_URL
-	});*/
+	});
 	
-	navigator.device.capture.captureImage(captureSuccess, captureError, { limit: 1 });
+	//navigator.device.capture.captureImage(captureSuccess, captureError, { limit: 1 });
 	
 }
 
 
 function onCameraSuccess(imageData) {
-    /*var image = document.getElementById('myImage');
+	alert("camera success");
+    var image = document.getElementById('previewImg');
     image.style.display = 'block';
-    image.src = "data:image/jpeg;base64," + imageData;*/
+    image.src = "data:image/jpeg;base64," + imageData;
+    window.location.hash = "#participate-submit";
     //image.src = imageData;
-    uploadFile(imageData);
+    //uploadFile(imageData);
 }
 
 function onCameraFail(message) {
