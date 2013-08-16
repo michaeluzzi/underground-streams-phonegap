@@ -137,7 +137,7 @@ function onCameraSuccess(imageURI) {
     image.style.display = 'block';
     //image.src = "data:image/jpeg;base64," + imageData;
     image.src = imageURI;
-    window.resolveLocalFileSystemURI(imageURI, onResolveSuccess, onResolveFail);
+    //window.resolveLocalFileSystemURI(imageURI, onResolveSuccess, onResolveFail);
     window.location.hash = "#participate-submit";
     //uploadFile(imageData);
 }
@@ -167,7 +167,7 @@ function captureError(error) {
 }
 
 function submitPhoto() {
-
+	window.resolveLocalFileSystemURI(imageURI, onResolveSuccess, onResolveFail);
 }
 
 // Upload files to server
@@ -238,7 +238,7 @@ function onFileMoveFail(error) {
 function onResolveSuccess(fileEntry) {
     alert("resolve success: " + fileEntry.fullPath);
     fileToMove = fileEntry;
-    fs.root.getDirectory("underground-streams-test", {create: true, exclusive: true}, onMoveFile, onMoveFileFail);
+    fs.root.getDirectory("underground-streams-test", {create: true, exclusive: false}, onMoveFile, onMoveFileFail);
     //fileEntry.moveTo(folderName, onFileMoveSuccess, onFileMoveFail);
 }
 
@@ -247,11 +247,12 @@ function onResolveFail(evt) {
 }
 
 function onMoveFile(dir) {
+	alert("move file success " + dir.name);
 	fileToMove.moveTo(dir, onFileMoveSuccess, onFileMoveFail);
 }
 
 function onMoveFileFail(error) {
-	alert(error);
+	alert("error moving file " + error);
 }
 
 
