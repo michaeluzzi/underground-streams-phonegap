@@ -143,7 +143,7 @@ function onCameraFail(message) {
 //
 function captureSuccess(mediaFiles) {    
     //uploadFile(mediaFiles[0]);
-    window.location = "#participate-success";
+    window.location.hash = "#participate-success";
 }
 
 // Called if something bad happens.
