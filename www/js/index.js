@@ -172,8 +172,30 @@ function submitPhoto() {
 	window.resolveLocalFileSystemURI(uri, onResolveSuccess, onResolveFail);
 }
 
+function uploadFile(entry) {
+	var request = new XMLHttpRequest();
+	request.open("POST", "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent", true);
+	
+	request.onreadystatechange=function() {
+  		if (request.readyState==4/* && xmlhttp.status==200*/)
+    	{
+    		alert(request.responseText);
+    	}
+  	}
+  	
+  	var formdata = new FormData();
+  	formdata.append("files", entry);
+  	formdata.append("title", "testUpload");
+  	formdata.append("subwayStop", "104");
+  	formdata.append("subwayLine", "1");
+  	formdata.append("user", "testUser");
+  	
+  	request.send(formdata);
+	
+}
+
 // Upload files to server
-function uploadFile(mediaFile) {
+/*function uploadFile2(mediaFile) {
     path = mediaFile.fullPath;
     name = mediaFile.name;
     
@@ -201,7 +223,7 @@ function uploadFile(mediaFile) {
         },
         options
         );
-}
+}*/
 
 
 function onFileSystemSuccess(fileSystem) {
@@ -231,6 +253,7 @@ function onGetDirectoryFail(error) {
 
 function onFileMoveSuccess(entry) {
     alert("New Path: " + entry.fullPath);
+    uploadFile(entry);
 }
 
 function onFileMoveFail(error) {
