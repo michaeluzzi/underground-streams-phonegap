@@ -28,7 +28,7 @@ var fileToMove; // fileEntry of current image
 var app = {
     // Application Constructor
     initialize: function() {
-    	alert("initialize");
+    	//alert("initialize");
         this.bindEvents();    
     },
     // Bind Event Listeners
@@ -110,7 +110,7 @@ var onPositionSuccess = function(position) {
 // onError Callback receives a PositionError object
 //
 function onPositionError(error) {
-    alert('code: '    + error.code    + '\n' +
+    alert('position error code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
 }
 
@@ -122,7 +122,7 @@ function launchCamera() {
 
 // when photo is taken, navigate to submit page and display photo
 function onCameraSuccess(imageURI) {
-	alert("camera success " + imageURI);
+	//alert("camera success " + imageURI);
     var image = document.getElementById('previewImg');
     image.style.display = 'block';
     image.src = imageURI;
@@ -141,7 +141,7 @@ function submitPhoto() {
 
 // get directory where file will be moved to ("underground-streams-test")
 function onResolveSuccess(fileEntry) {
-    alert("resolve success: " + fileEntry.fullPath);
+    //alert("resolve success: " + fileEntry.fullPath);
     fileToMove = fileEntry;
     fs.root.getDirectory("underground-streams-test", {create: true, exclusive: false}, onMoveFile, onMoveFileFail);
 }
@@ -152,7 +152,7 @@ function onResolveFail(evt) {
 
 // move the file
 function onMoveFile(dir) {
-	alert("moving file to " + dir.name);
+	//alert("moving file to " + dir.name);
 	fileToMove.moveTo(dir, fileToMove.name, onFileMoveSuccess, onFileMoveFail);
 }
 
@@ -162,7 +162,7 @@ function onMoveFileFail(error) {
 
 // after file is moved, try to immediately upload it
 function onFileMoveSuccess(entry) {
-    alert("New Path: " + entry.fullPath);
+    //alert("New Path: " + entry.fullPath);
     uploadFile(entry);
 }
 
@@ -238,7 +238,7 @@ function onFileSystemFail(evt) {
 }
 
 function onGetDirectorySuccess(dir) { 
-      alert("Created dir "+dir.name); 
+      //alert("Created dir "+dir.name); 
 } 
 
 function onGetDirectoryFail(error) { 
