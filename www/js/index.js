@@ -17,13 +17,13 @@
  * under the License.
  */
  
-var jsonObj = {};
+var jsonObj = {}; // to store stuff
 
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
 var fs; // file system
-var uri;
-var fileToMove; // image to move
+var uri; // uri of current image
+var fileToMove; // fileEntry of current image
 
 var app = {
     // Application Constructor
@@ -45,11 +45,14 @@ var app = {
     onDeviceReady: function() {
         //app.receivedEvent('deviceready');
         
+        // access file system - on success create a directory to store content
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemFail);
         
+        // camera stuff
         pictureSource = navigator.camera.PictureSourceType;
         destinationType = navigator.camera.DestinationType;
         
+        // get current position
         navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError);
         
     },
@@ -71,32 +74,29 @@ var app = {
 // current GPS coordinates
 //
 var onPositionSuccess = function(position) {
-    alert('Latitude: '          + position.coords.latitude          + '\n' +
+    /*alert('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
           'Altitude: '          + position.coords.altitude          + '\n' +
           'Accuracy: '          + position.coords.accuracy          + '\n' +
           'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
           'Heading: '           + position.coords.heading           + '\n' +
           'Speed: '             + position.coords.speed             + '\n' +
-          'Timestamp: '         + position.timestamp                + '\n');
+          'Timestamp: '         + position.timestamp                + '\n');*/
     
-    
+    // real coordinates
     var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
     alert(str);
+    // hard coded coordinates for testing
     $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
-    //$.getJSON(str,
         function(nearbyStations) {
-        	//alert(data);
         	jsonObj.nearbyStations = nearbyStations;
-        	alert(jsonObj.nearbyStations[0].STOP_NAME);
+        	//alert(jsonObj.nearbyStations[0].STOP_NAME);
         	for (var i=0; i<jsonObj.nearbyStations.length; i++)
 			{
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
 				$.getJSON(url,
 					function(stationContent) {
-						//$("#apiTest").append("<p>" + stationContent + "</p>");
-							
-							
+							// populate jsonObj with station content	
 							
 					}
 				);
@@ -104,12 +104,6 @@ var onPositionSuccess = function(position) {
         		
         }
     );
-    
-    // camera
-    /*navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
-    	destinationType: destinationType.DATA_URL
-	});*/
-    
     
 };
 
@@ -123,55 +117,60 @@ function onPositionError(error) {
 function launchCamera() {
 	navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
 		destinationType: destinationType.FILE_URI
-    	//destinationType: destinationType.DATA_URL
-	});
-	
-	//navigator.device.capture.captureImage(captureSuccess, captureError, { limit: 1 });
-	
+	});	
 }
 
-
-//function onCameraSuccess(imageData) {
+// when photo is taken, navigate to submit page and display photo
 function onCameraSuccess(imageURI) {
 	alert("camera success " + imageURI);
     var image = document.getElementById('previewImg');
     image.style.display = 'block';
-    //image.src = "data:image/jpeg;base64," + imageData;
     image.src = imageURI;
     uri = imageURI;
-    //window.resolveLocalFileSystemURI(imageURI, onResolveSuccess, onResolveFail);
     window.location.hash = "#participate-submit";
-    //uploadFile(imageData);
 }
 
 function onCameraFail(message) {
    	alert('Failed because: ' + message);
 }
 
-// Called when capture operation is finished
-//
-function captureSuccess(mediaFiles) {    
-    //uploadFile(mediaFiles[0]);
-    //alert("capture success")
-    //alert(window.location.hash);
-    var folderName = fs.root.name + "/underground-streams-test";
-    //entry.getDirectory("underground-streams-test", {create: true, exclusive: true}, moveFile, onGetDirectoryFail);
-    mediaFiles[0].moveTo(folderName, onFileMoveSuccess, onFileMoveFail);
-    window.location.hash = "#participate-submit";
-    //alert(window.location.hash);
-}
-
-// Called if something bad happens.
-//
-function captureError(error) {
-    var msg = 'An error occurred during capture: ' + error.code;
-    navigator.notification.alert(msg, null, 'Uh oh!');
-}
-
+// user clicks submit, retrieve fileEntry from the uri
 function submitPhoto() {
 	window.resolveLocalFileSystemURI(uri, onResolveSuccess, onResolveFail);
 }
 
+// get directory where file will be moved to ("underground-streams-test")
+function onResolveSuccess(fileEntry) {
+    alert("resolve success: " + fileEntry.fullPath);
+    fileToMove = fileEntry;
+    fs.root.getDirectory("underground-streams-test", {create: true, exclusive: false}, onMoveFile, onMoveFileFail);
+}
+
+function onResolveFail(evt) {
+    alert("resolve fail error code " + evt.target.error.code);
+}
+
+// move the file
+function onMoveFile(dir) {
+	alert("moving file to " + dir.name);
+	fileToMove.moveTo(dir, fileToMove.name, onFileMoveSuccess, onFileMoveFail);
+}
+
+function onMoveFileFail(error) {
+	alert("error moving file " + error);
+}
+
+// after file is moved, try to immediately upload it
+function onFileMoveSuccess(entry) {
+    alert("New Path: " + entry.fullPath);
+    uploadFile(entry);
+}
+
+function onFileMoveFail(error) {
+    alert(error.code);
+}
+
+// upload file to server using ajax
 function uploadFile(entry) {
 	var request = new XMLHttpRequest();
 	request.open("POST", "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent", true);
@@ -194,7 +193,7 @@ function uploadFile(entry) {
 	
 }
 
-// Upload files to server
+// Upload files to server using FileTransfer
 /*function uploadFile2(mediaFile) {
     path = mediaFile.fullPath;
     name = mediaFile.name;
@@ -225,18 +224,17 @@ function uploadFile(entry) {
         );
 }*/
 
-
+// on first open, create directory to hold ug-streams content
 function onFileSystemSuccess(fileSystem) {
-	//$("#apiTest").append("<p>fs success</p>");
 	fs = fileSystem;
 	var entry = fs.root;
     entry.getDirectory("underground-streams-test", {create: true, exclusive: true}, onGetDirectorySuccess, onGetDirectoryFail);
-    alert(fileSystem.name);
-    alert(fileSystem.root.name);
+    //alert(fileSystem.name);
+    //alert(fileSystem.root.name);
 }
 
 function onFileSystemFail(evt) {
-    alert(evt.target.error.code);
+    alert("file system error code " + evt.target.error.code);
 }
 
 function onGetDirectorySuccess(dir) { 
@@ -251,34 +249,10 @@ function onGetDirectoryFail(error) {
      }
 }
 
-function onFileMoveSuccess(entry) {
-    alert("New Path: " + entry.fullPath);
-    uploadFile(entry);
-}
 
-function onFileMoveFail(error) {
-    alert(error.code);
-}
 
-function onResolveSuccess(fileEntry) {
-    alert("resolve success: " + fileEntry.fullPath);
-    fileToMove = fileEntry;
-    fs.root.getDirectory("underground-streams-test", {create: true, exclusive: false}, onMoveFile, onMoveFileFail);
-    //fileEntry.moveTo(folderName, onFileMoveSuccess, onFileMoveFail);
-}
 
-function onResolveFail(evt) {
-    alert(evt.target.error.code);
-}
 
-function onMoveFile(dir) {
-	alert("moving file to " + dir.name);
-	fileToMove.moveTo(dir, fileToMove.name, onFileMoveSuccess, onFileMoveFail);
-}
-
-function onMoveFileFail(error) {
-	alert("error moving file " + error);
-}
 
 
 
