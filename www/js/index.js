@@ -120,7 +120,8 @@ function onPositionError(error) {
 
 function launchCamera() {
 	navigator.camera.getPicture(onCameraSuccess, onCameraFail, { quality: 50,
-    	destinationType: destinationType.DATA_URL
+		destinationType: destinationType.FILE_URI
+    	//destinationType: destinationType.DATA_URL
 	});
 	
 	//navigator.device.capture.captureImage(captureSuccess, captureError, { limit: 1 });
@@ -128,13 +129,14 @@ function launchCamera() {
 }
 
 
-function onCameraSuccess(imageData) {
-	alert("camera success");
+//function onCameraSuccess(imageData) {
+function onCameraSuccess(imageURI) {
+	alert("camera success " + imageURI);
     var image = document.getElementById('previewImg');
     image.style.display = 'block';
-    image.src = "data:image/jpeg;base64," + imageData;
+    //image.src = "data:image/jpeg;base64," + imageData;
+    image.src = imageData;
     window.location.hash = "#participate-submit";
-    //image.src = imageData;
     //uploadFile(imageData);
 }
 
@@ -160,6 +162,10 @@ function captureSuccess(mediaFiles) {
 function captureError(error) {
     var msg = 'An error occurred during capture: ' + error.code;
     navigator.notification.alert(msg, null, 'Uh oh!');
+}
+
+function submitPhoto() {
+
 }
 
 // Upload files to server
@@ -227,9 +233,5 @@ function onFileMoveSuccess(error) {
     alert(error.code);
 }
 
-/*function doNothing() {
-	// dummy form
-	//window.location.hash = "#participate-submit";
-}*/
 
 
