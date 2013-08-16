@@ -229,6 +229,7 @@ function onFileMoveSuccess(error) {
 
 function doNothing() {
 	// dummy form
+	window.location.hash = "#participate-submit";
 }
 
 
