@@ -180,9 +180,9 @@ function uploadFile(entry) {
 	request.onreadystatechange=function() {
   		if (request.readyState==4 && request.status==200)
     	{
-    		alert(request.responseText);
+    		alert("success: " + request.responseText);
     	}
-    	alert(request.responseText);
+    	alert("fail: " + request.responseText);
   	}
   	
   	/*var files = {
@@ -194,7 +194,7 @@ function uploadFile(entry) {
   	};*/
   	
   	var formdata = new FormData();
-  	formdata.append("userContent", entry, entry.name);
+  	formdata.append("userContent", entry.file);
   	formdata.append("title", "testUpload");
   	formdata.append("subwayStop", "104");
   	formdata.append("subwayLine", "1");
