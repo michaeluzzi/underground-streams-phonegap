@@ -164,7 +164,9 @@ function onMoveFileFail(error) {
 // after file is moved, try to immediately upload it
 function onFileMoveSuccess(entry) {
     //alert("New Path: " + entry.fullPath);
-    uploadFile(entry);
+    //uploadFile(entry);
+    
+    uploadFile2();
 }
 
 function onFileMoveFail(error) {
@@ -195,7 +197,7 @@ function uploadFile(entry) {
   						
   					//alert("theFile name " + theFile.name);
   					var formdata = new FormData();
-  					formdata.append("userContent[]", entry, entry.name);
+  					formdata.append("userContent", entry, entry.name);
   					formdata.append("title", "testUpload");
   					formdata.append("subwayStop", "104");
   					formdata.append("subwayLine", "1");
@@ -245,24 +247,26 @@ function uploadFile(entry) {
 }
 
 // Upload files to server using FileTransfer
-/*function uploadFile2(mediaFile) {
+function uploadFile2() {
     path = mediaFile.fullPath;
     name = mediaFile.name;
     
     var options = new FileUploadOptions();
-    options.fileKey="file";
+    options.fileKey="userContent";
     options.fileName=mediaFile.name;
     options.mimeType="image/jpeg";
 
     var params = new Object();
-    params.fullpath = path;
-    params.name = name;
+    params.title = "testUpload";
+  	params.subwayStop = "104";
+  	params.subwayLine = "1";
+  	params.challengeID = "521248324138b08c6c000005";
 
     options.params = params;
-    options.chunkedMode = true;
+    options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload( path, "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent",
+    ft.upload( uri, "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent",
         function(result) {
 			//upload successful
 			alert("upload success");           
@@ -273,7 +277,7 @@ function uploadFile(entry) {
         },
         options
         );
-}*/
+}
 
 // on first open, create directory to hold ug-streams content
 function onFileSystemSuccess(fileSystem) {
