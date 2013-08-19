@@ -275,7 +275,7 @@ function uploadFile2() {
         function(error) {
             //upload unsuccessful, error occured while upload. 
             alert("upload fail");
-            alert(error);
+            alert("error code: " + error.code + "\nerror source: " + error.source + "\nerror target: " + error.target);
         },
         options
         );
