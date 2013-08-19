@@ -85,12 +85,13 @@ var onPositionSuccess = function(position) {
     
     // real coordinates
     var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
-    alert(str);
+    //alert(str);
+    $.getJSON(str),
     // hard coded coordinates for testing
-    $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
+    //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
         function(nearbyStations) {
         	jsonObj.nearbyStations = nearbyStations;
-        	//alert(jsonObj.nearbyStations[0].STOP_NAME);
+        	alert(jsonObj.nearbyStations[0].STOP_NAME);
         	for (var i=0; i<jsonObj.nearbyStations.length; i++)
 			{
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
@@ -182,8 +183,16 @@ function uploadFile(entry) {
     	}
   	}
   	
+  	var files = {
+  		userContent: {
+  			filename: entry.name,
+  			path: entry.name.substring(0, entry.name.lastIndexOf('/')+1),
+  			type: "image/jpeg"
+  		}
+  	};
+  	
   	var formdata = new FormData();
-  	formdata.append("files", entry);
+  	formdata.append("files", files);
   	formdata.append("title", "testUpload");
   	formdata.append("subwayStop", "104");
   	formdata.append("subwayLine", "1");
