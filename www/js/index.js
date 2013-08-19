@@ -269,11 +269,13 @@ function uploadFile2() {
     ft.upload( uri, encodeURI("http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent"),
         function(result) {
 			//upload successful
-			alert("upload success");           
+			alert("upload success");
+			alert(result);          
         },
         function(error) {
             //upload unsuccessful, error occured while upload. 
             alert("upload fail");
+            alert(error);
         },
         options
         );
