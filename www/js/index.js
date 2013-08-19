@@ -194,7 +194,7 @@ function uploadFile(entry) {
   	};*/
   	
   	var formdata = new FormData();
-  	formdata.append("userContent", entry.file);
+  	formdata.append("userContent", entry.file());
   	formdata.append("title", "testUpload");
   	formdata.append("subwayStop", "104");
   	formdata.append("subwayLine", "1");
