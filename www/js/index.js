@@ -194,7 +194,7 @@ function uploadFile(entry) {
   			type: "image/jpeg"
   		}
   	};*/
-  	
+  	alert(theFile.name);
   	var formdata = new FormData();
   	formdata.append("userContent", theFile, theFile.name);
   	formdata.append("title", "testUpload");
