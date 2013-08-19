@@ -195,7 +195,7 @@ function uploadFile(entry) {
   						
   					//alert("theFile name " + theFile.name);
   					var formdata = new FormData();
-  					formdata.append("userContent", f, f.name);
+  					formdata.append("userContent", entry, f.name);
   					formdata.append("title", "testUpload");
   					formdata.append("subwayStop", "104");
   					formdata.append("subwayLine", "1");
