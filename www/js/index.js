@@ -174,8 +174,8 @@ function onFileMoveFail(error) {
 // upload file to server using ajax
 function uploadFile(entry) {
 	alert("upload file " + entry.name);
-	var theFile;
-	entry.file(function(f){alert(f.name); theFile = f;}, function(err){alert(err);});
+	var userContent;
+	entry.file(function(f){alert(f.name); userContent = f;}, function(err){alert(err);});
 	var request = new XMLHttpRequest();
 	request.open("POST", "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent", true);
 	
@@ -195,8 +195,11 @@ function uploadFile(entry) {
   		}
   	};*/
   	
+  	var files = new Array();
+  	files.push(userContent);
+  	
   	var formdata = new FormData();
-  	formdata.append("userContent", theFile);
+  	formdata.append("files", files);
   	formdata.append("title", "testUpload");
   	formdata.append("subwayStop", "104");
   	formdata.append("subwayLine", "1");
