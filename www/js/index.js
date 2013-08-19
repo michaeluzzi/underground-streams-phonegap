@@ -270,9 +270,9 @@ function uploadFile2(entry) {
         function(result) {
 			//upload successful
 			alert("upload success");
-			alert(result.bytesSent); 
-			alert(result.responseCode);
-			alert(result.response);       
+			//alert(result.bytesSent); 
+			//alert(result.responseCode);
+			//alert(result.response);       
         },
         function(error) {
             //upload unsuccessful, error occured while upload. 
@@ -301,10 +301,10 @@ function onGetDirectorySuccess(dir) {
 } 
 
 function onGetDirectoryFail(error) { 
-     alert("Error creating directory "+error.code);
+     //alert("Error creating directory "+error.code);
      if (error.code == 12)
      {
-     	alert("file path already exists");
+     	//alert("file path already exists");
      }
 }
 
