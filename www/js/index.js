@@ -266,7 +266,7 @@ function uploadFile2(entry) {
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload( entry, encodeURI("http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent"),
+    ft.upload( entry.fullPath, encodeURI("http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent"),
         function(result) {
 			//upload successful
 			alert("upload success");
