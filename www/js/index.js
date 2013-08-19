@@ -270,7 +270,9 @@ function uploadFile2(entry) {
         function(result) {
 			//upload successful
 			alert("upload success");
-			alert(result);          
+			alert(result.bytesSent); 
+			alert(result.responseCode);
+			alert(result.response);       
         },
         function(error) {
             //upload unsuccessful, error occured while upload. 
