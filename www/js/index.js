@@ -177,7 +177,7 @@ function uploadFile(entry) {
 	//var theFile;
 	entry.file(function(f) {
 					alert("f name " + f.name);
-					//theFile = f;
+					alert("f full path " + f.fullPath);
 					
 					var request = new XMLHttpRequest();
 					request.open("POST", "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent", true);	
