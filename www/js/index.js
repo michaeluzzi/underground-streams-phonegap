@@ -166,7 +166,7 @@ function onFileMoveSuccess(entry) {
     //alert("New Path: " + entry.fullPath);
     //uploadFile(entry);
     
-    uploadFile2();
+    uploadFile2(entry);
 }
 
 function onFileMoveFail(error) {
@@ -247,7 +247,7 @@ function uploadFile(entry) {
 }
 
 // Upload files to server using FileTransfer
-function uploadFile2() {
+function uploadFile2(entry) {
     //path = mediaFile.fullPath;
     //name = mediaFile.name;
     
@@ -266,7 +266,7 @@ function uploadFile2() {
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload( uri, encodeURI("http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent"),
+    ft.upload( entry, encodeURI("http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent"),
         function(result) {
 			//upload successful
 			alert("upload success");
