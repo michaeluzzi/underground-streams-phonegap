@@ -248,12 +248,12 @@ function uploadFile(entry) {
 
 // Upload files to server using FileTransfer
 function uploadFile2() {
-    path = mediaFile.fullPath;
-    name = mediaFile.name;
+    //path = mediaFile.fullPath;
+    //name = mediaFile.name;
     
     var options = new FileUploadOptions();
     options.fileKey="userContent";
-    options.fileName=mediaFile.name;
+    options.fileName="testfilename.jpg";
     options.mimeType="image/jpeg";
 
     var params = new Object();
@@ -266,7 +266,7 @@ function uploadFile2() {
     options.chunkedMode = false;
     
     var ft = new FileTransfer();
-    ft.upload( uri, "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent",
+    ft.upload( uri, encodeURI("http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent"),
         function(result) {
 			//upload successful
 			alert("upload success");           
