@@ -91,7 +91,7 @@ var onPositionSuccess = function(position) {
     //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
         function(nearbyStations) {
         	jsonObj.nearbyStations = nearbyStations;
-        	alert(jsonObj.nearbyStations[0].STOP_NAME);
+        	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
         	for (var i=0; i<jsonObj.nearbyStations.length; i++)
 			{
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
