@@ -174,18 +174,55 @@ function onFileMoveFail(error) {
 // upload file to server using ajax
 function uploadFile(entry) {
 	alert("upload file " + entry.name);
-	var theFile;
-	entry.file(function(f){alert("f name " + f.name); theFile = f;}, function(err){alert(err);});
-	var request = new XMLHttpRequest();
-	request.open("POST", "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent", true);
+	//var theFile;
+	entry.file(function(f) {
+					alert("f name " + f.name);
+					//theFile = f;
+					
+					var request = new XMLHttpRequest();
+					request.open("POST", "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent", true);	
+					
+			   		request.onreadystatechange=function() {
+  						if (request.readyState==4 && request.status==200)
+    					{
+    						alert("success: " + request.responseText);
+    					}
+    					else
+    					{
+    						alert(request.responseText);
+    					}
+  					};
+  						
+  					//alert("theFile name " + theFile.name);
+  					var formdata = new FormData();
+  					formdata.append("userContent", f, f.name);
+  					formdata.append("title", "testUpload");
+  					formdata.append("subwayStop", "104");
+  					formdata.append("subwayLine", "1");
+  					formdata.append("challengeID", "521248324138b08c6c000005");
+  					//formdata.append("user", "testUser");
+  	
+  					request.send(formdata);
+			   
+			   },
+			   function(err) {
+			   		alert(err);
+			   }
+	);
 	
-	request.onreadystatechange=function() {
+	
+	//var request = new XMLHttpRequest();
+	//request.open("POST", "http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent", true);
+	
+	
+	
+	/*request.onreadystatechange=function() {
   		if (request.readyState==4 && request.status==200)
     	{
     		alert("success: " + request.responseText);
     	}
     	alert("fail: " + request.responseText);
-  	};
+  	};*/
   	
   	/*var files = {
   		userContent: {
@@ -194,7 +231,7 @@ function uploadFile(entry) {
   			type: "image/jpeg"
   		}
   	};*/
-  	alert("theFile name " + theFile.name);
+  	/*alert("theFile name " + theFile.name);
   	var formdata = new FormData();
   	formdata.append("userContent", theFile, theFile.name);
   	formdata.append("title", "testUpload");
@@ -203,7 +240,7 @@ function uploadFile(entry) {
   	formdata.append("challengeID", "521248324138b08c6c000005");
   	//formdata.append("user", "testUser");
   	
-  	request.send(formdata);
+  	request.send(formdata);*/
 	
 }
 
