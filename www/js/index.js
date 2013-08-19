@@ -184,20 +184,21 @@ function uploadFile(entry) {
     	}
   	}
   	
-  	var files = {
+  	/*var files = {
   		userContent: {
   			filename: entry.name,
   			path: entry.name.substring(0, entry.name.lastIndexOf('/')+1),
   			type: "image/jpeg"
   		}
-  	};
+  	};*/
   	
   	var formdata = new FormData();
-  	formdata.append("files", files);
+  	formdata.append("userContent", entry);
   	formdata.append("title", "testUpload");
   	formdata.append("subwayStop", "104");
   	formdata.append("subwayLine", "1");
-  	formdata.append("user", "testUser");
+  	formdata.append("challengeID", "521248324138b08c6c000005");
+  	//formdata.append("user", "testUser");
   	
   	request.send(formdata);
 	
