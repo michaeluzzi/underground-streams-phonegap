@@ -166,7 +166,7 @@ function onFileMoveSuccess(entry) {
     //alert("New Path: " + entry.fullPath);
     //uploadFile(entry);
     
-    uploadFile2(entry);
+    uploadFile(entry);
 }
 
 function onFileMoveFail(error) {
@@ -174,7 +174,7 @@ function onFileMoveFail(error) {
 }
 
 // upload file to server using ajax
-function uploadFile(entry) {
+function uploadFile2(entry) {
 	alert("upload file " + entry.name);
 	//var theFile;
 	entry.file(function(f) {
@@ -247,9 +247,7 @@ function uploadFile(entry) {
 }
 
 // Upload files to server using FileTransfer
-function uploadFile2(entry) {
-    //path = mediaFile.fullPath;
-    //name = mediaFile.name;
+function uploadFile(entry) {
     
     var options = new FileUploadOptions();
     options.fileKey="userContent";
