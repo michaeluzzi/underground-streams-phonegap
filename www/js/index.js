@@ -92,7 +92,7 @@ var onPositionSuccess = function(position) {
         function(nearbyStations) {
         	jsonObj.nearbyStations = nearbyStations;
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
-        	jsonObj.lines = [];
+        	/*jsonObj.lines = [];
         	for (var i = 0; i < nearbyStations[0].Routes_ALL.length; i++)
         	{
         		var line = nearbyStations[0].Routes_ALL[i];
@@ -107,7 +107,7 @@ var onPositionSuccess = function(position) {
         			}
         		);
         		alert(jsonObj.lines[i].line);	
-        	}
+        	}*/
         	for (var i=0; i<jsonObj.nearbyStations.length; i++)
 			{
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
