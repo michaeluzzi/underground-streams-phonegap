@@ -99,10 +99,11 @@ var onPositionSuccess = function(position) {
         function(nearbyStations) {
         	jsonObj.nearbyStations = nearbyStations;
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
-        	/*jsonObj.lines = [];
-        	for (var i = 0; i < nearbyStations[0].Routes_ALL.length; i++)
+        	jsonObj.lines = [];
+        	for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
         	{
-        		var line = nearbyStations[0].Routes_ALL[i];
+        		alert(jsonObj.nearbyStations[0].Routes_ALL[i]);
+        		/*var line = nearbyStations[0].Routes_ALL[i];
         		var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getStationsByLine/" + line;
         		
         		$.getJSON(url,
@@ -113,8 +114,8 @@ var onPositionSuccess = function(position) {
         				};
         			}
         		);
-        		alert(jsonObj.lines[i].line);	
-        	}*/
+        		alert(jsonObj.lines[i].line);*/
+        	}
         	for (var i=0; i<jsonObj.nearbyStations.length; i++)
 			{
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
@@ -284,7 +285,6 @@ function uploadFile(entry) {
   	//params.subwayLine = "1";
   	params.subwayLine = document.getElementById("submit-line").value;
   	//params.challengeID = "521248324138b08c6c000005";
-  	alert(jsonObj.activeChallenges[0]._id);
   	params.challengeID = jsonObj.activeChallenges[0]._id;
 
     options.params = params;
