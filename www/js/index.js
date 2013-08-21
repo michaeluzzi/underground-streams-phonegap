@@ -53,12 +53,13 @@ var app = {
         destinationType = navigator.camera.DestinationType;
         
         // get current position
-        navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError);
+        //navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError);
         
         // get active challenges
         $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getActiveChallenges",
         	function(activeChallenges) {
         		jsonObj.activeChallenges = activeChallenges;
+        		alert(activeChallenges);
         	}
         );
         
