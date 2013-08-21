@@ -102,19 +102,20 @@ var onPositionSuccess = function(position) {
         	jsonObj.lines = [];
         	for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
         	{
-        		alert(jsonObj.nearbyStations[0].Routes_ALL[i]);
-        		/*var line = nearbyStations[0].Routes_ALL[i];
-        		var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getStationsByLine/" + line;
+        		//alert(jsonObj.nearbyStations[0].Routes_ALL[i]);
+        		var line = jsonObj.nearbyStations[0].Routes_ALL[i];
+        		//var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getStationsByLine/" + line;
         		
-        		$.getJSON(url,
+        		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStationsByLine/" + line,
         			function(stations) {
-        				jsonObj.lines.push {
+        				alert(stations);
+        				/*jsonObj.lines.push {
         					"line" : line,			
         					"stations" : stations
-        				};
+        				};*/
         			}
         		);
-        		alert(jsonObj.lines[i].line);*/
+        		//alert(jsonObj.lines[i].line);
         	}
         	for (var i=0; i<jsonObj.nearbyStations.length; i++)
 			{
