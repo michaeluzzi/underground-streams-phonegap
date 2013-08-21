@@ -100,23 +100,31 @@ var onPositionSuccess = function(position) {
         	jsonObj.nearbyStations = nearbyStations;
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
         	jsonObj.lines = [];
+        	var submitLineDropdown = document.getElementById("submit-line");
         	for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
         	{
         		//alert(jsonObj.nearbyStations[0].Routes_ALL[i]);
         		var line = jsonObj.nearbyStations[0].Routes_ALL[i];
+        		submitLineDropdown.add(new Option(line));
+        		     		
         		//var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getStationsByLine/" + line;
         		
-        		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStationsByLine/" + line,
+        		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         			function(stations) {
-        				alert(stations);
-        				/*jsonObj.lines.push {
+        				//alert(stations);
+        				jsonObj.lines.push {
         					"line" : line,			
         					"stations" : stations
-        				};*/
+        				};
         			}
         		);
         		//alert(jsonObj.lines[i].line);
         	}
+        	
+        	submitLineDropdown.add(new Option("Z"));
+        	
+        	submitLineDropdown.objects[0].selected = true;
+        	
         	for (var i=0; i<jsonObj.nearbyStations.length; i++)
 			{
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
