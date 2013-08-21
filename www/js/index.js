@@ -28,7 +28,7 @@ var fileToMove; // fileEntry of current image
 var app = {
     // Application Constructor
     initialize: function() {
-    	alert("initialize");
+    	//alert("initialize");
         this.bindEvents();    
     },
     // Bind Event Listeners
@@ -53,7 +53,7 @@ var app = {
         destinationType = navigator.camera.DestinationType;
         
         // get current position
-        //navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError);
+        navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError);
         
         // get active challenges
         $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getActiveChallenges",
@@ -101,34 +101,35 @@ var onPositionSuccess = function(position) {
         	jsonObj.nearbyStations = nearbyStations;
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
         	jsonObj.lines = [];
-        	//var submitLineDropdown = document.getElementById("submit-line");
+        	var submitLineDropdown = document.getElementById("submit-line");
         	for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
         	{
         		//alert(jsonObj.nearbyStations[0].Routes_ALL[i]);
         		var line = jsonObj.nearbyStations[0].Routes_ALL[i];
-        		//submitLineDropdown.add(new Option("A", "A"), null);
+        		submitLineDropdown.add(new Option(line, line), null);
         		     		
         		//var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getStationsByLine/" + line;
         		
+        		//$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         			function(stations) {
-        				//alert(stations);
-        				jsonObj.lines.push {
+        				alert(stations);
+        				jsonObj.lines.push({
         					"line" : line,			
         					"stations" : stations
-        				};
+        				});
         			}
         		);
         		//alert(jsonObj.lines[i].line);
         	}
         	
-        	//submitLineDropdown.add(new Option("Z", "Z"), null);
+        	submitLineDropdown.add(new Option("Z", "Z"), null);
         	
-        	//submitLineDropdown.objects[0].selected = true;
+        	submitLineDropdown.objects[0].selected = true;
         	
-        	for (var i=0; i<jsonObj.nearbyStations.length; i++)
+        	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
-				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[i].STOP_ID;
+				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[j].STOP_ID;
 				$.getJSON(url,
 					function(stationContent) {
 							// populate jsonObj with station content	
