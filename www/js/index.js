@@ -105,7 +105,7 @@ var onPositionSuccess = function(position) {
         	{
         		//alert(jsonObj.nearbyStations[0].Routes_ALL[i]);
         		var line = jsonObj.nearbyStations[0].Routes_ALL[i];
-        		submitLineDropdown.add(new Option(line, line), null);
+        		submitLineDropdown.add(new Option("A", "A"), null);
         		     		
         		//var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getStationsByLine/" + line;
         		
