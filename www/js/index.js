@@ -100,7 +100,7 @@ var onPositionSuccess = function(position) {
         	jsonObj.nearbyStations = nearbyStations;
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
         	jsonObj.lines = [];
-        	var submitLineDropdown = document.getElementById("submit-line");
+        	//var submitLineDropdown = document.getElementById("submit-line");
         	for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
         	{
         		//alert(jsonObj.nearbyStations[0].Routes_ALL[i]);
