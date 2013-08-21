@@ -271,7 +271,8 @@ function uploadFile(entry) {
     options.mimeType="image/jpeg";
 
     var params = new Object();
-    params.title = "testUpload";
+    //params.title = "testUpload";
+    params.title = document.getElementById("submit-title").value;
   	params.subwayStop = "104";
   	params.subwayLine = "1";
   	params.challengeID = "521248324138b08c6c000005";
