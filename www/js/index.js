@@ -55,6 +55,13 @@ var app = {
         // get current position
         navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError);
         
+        // get active challenges
+        $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getActiveChallenges",
+        	function(activeChallenges) {
+        		jsonObj.activeChallenges = activeChallenges;
+        	}
+        );
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -274,8 +281,11 @@ function uploadFile(entry) {
     //params.title = "testUpload";
     params.title = document.getElementById("submit-title").value;
   	params.subwayStop = "104";
-  	params.subwayLine = "1";
-  	params.challengeID = "521248324138b08c6c000005";
+  	//params.subwayLine = "1";
+  	params.subwayLine = document.getElementById("submit-line").value;
+  	//params.challengeID = "521248324138b08c6c000005";
+  	alert(jsonObj.activeChallenges[0]._id);
+  	params.challengeID = jsonObj.activeChallenges[0]._id;
 
     options.params = params;
     options.chunkedMode = false;
