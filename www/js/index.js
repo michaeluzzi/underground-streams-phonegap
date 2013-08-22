@@ -105,6 +105,8 @@ var onPositionSuccess = function(position) {
         	//var lines = new Array();
         	jsonObj.lines = new Array();
         	var submitLineDropdown = document.getElementById("submit-line");
+        	var submitStopDropdown = document.getElementById("submit-stop");
+        	var firstLine = false;
         	for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
         	{
         		//alert(jsonObj.nearbyStations[0].Routes_ALL[i]);
@@ -127,26 +129,39 @@ var onPositionSuccess = function(position) {
         				alert(jsonObj.lines[0].line);
         				alert(jsonObj.lines[0].stations.length);
         				//alert(jsonObj.lines[i]);
+        				
+        				
+        				if (firstLine == false)
+        				{
+        					for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
+        					{
+        						var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
+        						var stationId = jsonObj.lines[0].stations[k].STOP_ID;
+        						submitStopDropdown.add(new Option(stationName, stationId), null);
+        					}
+        					firstLine = true;
+        				}
+        				
         			}
         		);
         		//alert(jsonObj.lines[i].line);
         	}
         	
         	//alert(jsonObj.lines.length);
-        	alert("hello1");
+        	//alert("hello1");
         	submitLineDropdown.add(new Option("L", "L"), null);
-        	alert("hello2");
+        	//alert("hello2");
         	submitLineDropdown.objects[0].selected = true;
-        	alert("hello3");
-        	var submitStopDropdown = document.getElementById("submit-stop");
+        	//alert("hello3");
+        	//var submitStopDropdown = document.getElementById("submit-stop");
         	//alert("stations length " + jsonObj.lines[0].stations.length);
-        	alert("hello4");
-        	for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
+        	//alert("hello4");
+        	/*for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
         	{
         		var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
         		var stationId = jsonObj.lines[0].stations[k].STOP_ID;
         		submitStopDropdown.add(new Option(stationName, stationId), null);
-        	}
+        	}*/
         	
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
