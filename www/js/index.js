@@ -123,9 +123,17 @@ var onPositionSuccess = function(position) {
         		//alert(jsonObj.lines[i].line);
         	}
         	
-        	submitLineDropdown.add(new Option("Z", "Z"), null);
+        	submitLineDropdown.add(new Option("L", "L"), null);
         	
         	submitLineDropdown.objects[0].selected = true;
+        	
+        	var submitStopDropdown = document.getElementById("submit-stop");
+        	for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
+        	{
+        		var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
+        		var id = jsonObj.lines[0].stations[k].STOP_ID;
+        		submitLineDropdown.add(new Option(station, id), null);
+        	}
         	
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
@@ -292,9 +300,10 @@ function uploadFile(entry) {
     var params = new Object();
     //params.title = "testUpload";
     params.title = document.getElementById("submit-title").value;
-  	params.subwayStop = "104";
   	//params.subwayLine = "1";
   	params.subwayLine = document.getElementById("submit-line").value;
+  	//params.subwayStop = "104";
+  	params.subwayStop = document.getElementById("submit-stop").value;
   	//params.challengeID = "521248324138b08c6c000005";
   	params.challengeID = jsonObj.activeChallenges[0]._id;
 
