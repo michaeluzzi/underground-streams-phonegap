@@ -116,13 +116,13 @@ var onPositionSuccess = function(position) {
         		//$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         			function(stations) {
-        				//var apiData = JSON.parse(stations);
+        				var apiData = JSON.parse(stations);
         				alert(line);
         				alert(stations.length);
         				//lines.push(line);
         				jsonObj.lines.push({
         					line : line,			
-        					stations : JSON.parse(stations);
+        					stations : apiData
         				});
         				alert(jsonObj.lines[i].line);
         			}
