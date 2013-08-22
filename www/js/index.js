@@ -82,14 +82,14 @@ var app = {
 // current GPS coordinates
 //
 var onPositionSuccess = function(position) {
-    alert('Latitude: '          + position.coords.latitude          + '\n' +
+    /*alert('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
           'Altitude: '          + position.coords.altitude          + '\n' +
           'Accuracy: '          + position.coords.accuracy          + '\n' +
           'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
           'Heading: '           + position.coords.heading           + '\n' +
           'Speed: '             + position.coords.speed             + '\n' +
-          'Timestamp: '         + position.timestamp                + '\n');
+          'Timestamp: '         + position.timestamp                + '\n');*/
     
     // real coordinates
     var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
@@ -113,7 +113,7 @@ var onPositionSuccess = function(position) {
         		//$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         			function(stations) {
-        				alert(stations);
+        				//alert(stations);
         				jsonObj.lines.push({
         					"line" : line,			
         					"stations" : stations
@@ -127,13 +127,13 @@ var onPositionSuccess = function(position) {
         	
         	submitLineDropdown.objects[0].selected = true;
         	
-        	/*var submitStopDropdown = document.getElementById("submit-stop");
+        	var submitStopDropdown = document.getElementById("submit-stop");
         	for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
         	{
         		var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
         		var id = jsonObj.lines[0].stations[k].STOP_ID;
         		submitLineDropdown.add(new Option(station, id), null);
-        	}*/
+        	}
         	
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
