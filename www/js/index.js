@@ -132,7 +132,7 @@ var onPositionSuccess = function(position) {
         	{
         		var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
         		var stationId = jsonObj.lines[0].stations[k].STOP_ID;
-        		submitLineDropdown.add(new Option(stationName, stationId), null);
+        		submitStopDropdown.add(new Option(stationName, stationId), null);
         	}
         	
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
