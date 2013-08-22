@@ -60,7 +60,7 @@ var app = {
         	function(activeChallenges) {
         		//jsonObj.activeChallenges = activeChallenges;
         		jsonObj.activeChallenges = JSON.parse(activeChallenges);
-        		//alert(activeChallenges);
+        		alert(activeChallenges);
         	}
         );
         
