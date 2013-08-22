@@ -138,10 +138,10 @@ var onPositionSuccess = function(position) {
         						var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
         						var stationId = jsonObj.lines[0].stations[k].STOP_ID;
         						submitStopDropdown.add(new Option(stationName, stationId), null);
-        						if (stationId === "G26")
+        						if (stationId === jsonObj.nearbyStations[0].STOP_ID)
         						{
         							alert(stationId);
-        							submitStopDropdown.objects[k].selected = true;
+        							submitStopDropdown.options[k].selected = true;
         						}
         					}
         					firstLine = true;
@@ -156,7 +156,7 @@ var onPositionSuccess = function(position) {
         	//alert("hello1");
         	submitLineDropdown.add(new Option("L", "L"), null);
         	//alert("hello2");
-        	submitLineDropdown.objects[0].selected = true;
+        	submitLineDropdown.options[0].selected = true;
         	//alert("hello3");
         	//var submitStopDropdown = document.getElementById("submit-stop");
         	//alert("stations length " + jsonObj.lines[0].stations.length);
