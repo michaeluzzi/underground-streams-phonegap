@@ -103,7 +103,7 @@ var onPositionSuccess = function(position) {
         	//jsonObj.nearbyStations = JSON.parse(nearbyStations);
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
         	//var lines = new Array();
-        	//jsonObj.lines = new Array();
+        	jsonObj.lines = new Array();
         	var submitLineDropdown = document.getElementById("submit-line");
         	for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
         	{
@@ -120,12 +120,12 @@ var onPositionSuccess = function(position) {
         				alert(line);
         				alert(stations.length);
         				//lines.push(line);
-        				/*jsonObj.lines.push({
+        				jsonObj.lines.push({
         					line : line,			
         					stations : stations
-        				});*/
-        				jsonObj.lines = ["A","B","C"];
-        				alert(jsonObj.lines[i]);
+        				});
+        				alert(jsonObj.lines[0].line);
+        				//alert(jsonObj.lines[i]);
         			}
         		);
         		//alert(jsonObj.lines[i].line);
