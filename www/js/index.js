@@ -113,30 +113,30 @@ var onPositionSuccess = function(position) {
         		//$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         			function(stations) {
-        				//alert(stations);
-        				jsonObj.lines.push({
+        				alert(stations.length);
+        				/*jsonObj.lines.push({
         					"line" : line,			
         					"stations" : stations
-        				});
+        				});*/
         			}
         		);
         		//alert(jsonObj.lines[i].line);
         	}
         	
-        	alert(jsonObj.lines.length);
+        	//alert(jsonObj.lines.length);
         	
         	submitLineDropdown.add(new Option("L", "L"), null);
         	
         	submitLineDropdown.objects[0].selected = true;
         	
-        	var submitStopDropdown = document.getElementById("submit-stop");
+        	/*var submitStopDropdown = document.getElementById("submit-stop");
         	alert("stations length " + jsonObj.lines[0].stations.length);
         	for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
         	{
         		var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
         		var stationId = jsonObj.lines[0].stations[k].STOP_ID;
         		submitStopDropdown.add(new Option(stationName, stationId), null);
-        	}
+        	}*/
         	
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
