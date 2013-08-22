@@ -58,7 +58,8 @@ var app = {
         // get active challenges
         $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getActiveChallenges",
         	function(activeChallenges) {
-        		jsonObj.activeChallenges = activeChallenges;
+        		//jsonObj.activeChallenges = activeChallenges;
+        		jsonObj.activeChallenges = JSON.parse(activeChallenges);
         		//alert(activeChallenges);
         	}
         );
@@ -98,7 +99,8 @@ var onPositionSuccess = function(position) {
     // hard coded coordinates for testing
     //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
         function(nearbyStations) {
-        	jsonObj.nearbyStations = nearbyStations;
+        	//jsonObj.nearbyStations = nearbyStations;
+        	jsonObj.nearbyStations = JSON.parse(nearbyStations);
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
         	//var lines = new Array();
         	jsonObj.lines = new Array();
@@ -114,12 +116,13 @@ var onPositionSuccess = function(position) {
         		//$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         			function(stations) {
+        				//var apiData = JSON.parse(stations);
         				alert(line);
         				alert(stations.length);
         				//lines.push(line);
         				jsonObj.lines.push({
-        					line : "A",			
-        					stations : "B"
+        					line : line,			
+        					stations : JSON.parse(stations);
         				});
         				alert(jsonObj.lines[i].line);
         			}
