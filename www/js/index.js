@@ -116,7 +116,7 @@ var onPositionSuccess = function(position) {
         				//alert(line);
         				//alert(stations.length);
         				jsonObj.lines.push({
-        					"line" : line,			
+        					"line" : "A",			
         					"stations" : stations
         				});
         				alert(jsonObj.lines[i].stations.line);
