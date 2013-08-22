@@ -138,8 +138,9 @@ var onPositionSuccess = function(position) {
         						var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
         						var stationId = jsonObj.lines[0].stations[k].STOP_ID;
         						submitStopDropdown.add(new Option(stationName, stationId), null);
-        						if (stationId == "G26")
+        						if (stationId === "G26")
         						{
+        							alert(stationId);
         							submitStopDropdown.objects[k].selected = true;
         						}
         					}
