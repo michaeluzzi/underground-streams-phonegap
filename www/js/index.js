@@ -123,6 +123,8 @@ var onPositionSuccess = function(position) {
         		//alert(jsonObj.lines[i].line);
         	}
         	
+        	alert(jsonObj.lines.length);
+        	
         	submitLineDropdown.add(new Option("L", "L"), null);
         	
         	submitLineDropdown.objects[0].selected = true;
