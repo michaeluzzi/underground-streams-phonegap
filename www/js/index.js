@@ -128,9 +128,9 @@ var onPositionSuccess = function(position) {
         					line : line,			
         					stations : stations
         				});
-        				alert(jsonObj.lines[i].line);
-        				alert(jsonObj.lines[i].stations.length);
-        				//alert(jsonObj.lines[i]);
+        				//alert(jsonObj.lines[0].line);
+        				//alert(jsonObj.lines[0].stations.length);
+        				//alert(jsonObj.lines[0]);
         				
         				
         				if (firstLine == false)
