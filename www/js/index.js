@@ -125,6 +125,7 @@ var onPositionSuccess = function(position) {
         					stations : stations
         				});
         				alert(jsonObj.lines[0].line);
+        				alert(jsonObj.lines[0].stations.length);
         				//alert(jsonObj.lines[i]);
         			}
         		);
