@@ -128,6 +128,7 @@ var onPositionSuccess = function(position) {
         	submitLineDropdown.objects[0].selected = true;
         	
         	var submitStopDropdown = document.getElementById("submit-stop");
+        	alert("stations length " + jsonObj.lines[0].stations.length);
         	for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
         	{
         		var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
