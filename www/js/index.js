@@ -127,13 +127,13 @@ var onPositionSuccess = function(position) {
         	
         	submitLineDropdown.objects[0].selected = true;
         	
-        	var submitStopDropdown = document.getElementById("submit-stop");
+        	/*var submitStopDropdown = document.getElementById("submit-stop");
         	for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
         	{
         		var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
         		var id = jsonObj.lines[0].stations[k].STOP_ID;
         		submitLineDropdown.add(new Option(station, id), null);
-        	}
+        	}*/
         	
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
