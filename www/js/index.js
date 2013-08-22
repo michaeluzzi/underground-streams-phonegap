@@ -113,11 +113,12 @@ var onPositionSuccess = function(position) {
         		//$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         			function(stations) {
+        				alert(line);
         				alert(stations.length);
-        				/*jsonObj.lines.push({
+        				jsonObj.lines.push({
         					"line" : line,			
         					"stations" : stations
-        				});*/
+        				});
         			}
         		);
         		//alert(jsonObj.lines[i].line);
