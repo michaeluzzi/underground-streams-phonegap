@@ -95,8 +95,10 @@ var onPositionSuccess = function(position) {
     // real coordinates
     var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
     //alert(str);
-    $.getJSON(str,
+    //$.getJSON(str,
     // hard coded coordinates for testing
+    // union square
+    $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.735177&lon=-73.991675",
     //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
         function(nearbyStations) {
         	jsonObj.nearbyStations = nearbyStations;
@@ -126,8 +128,8 @@ var onPositionSuccess = function(position) {
         					line : line,			
         					stations : stations
         				});
-        				alert(jsonObj.lines[0].line);
-        				alert(jsonObj.lines[0].stations.length);
+        				alert(jsonObj.lines[i].line);
+        				alert(jsonObj.lines[i].stations.length);
         				//alert(jsonObj.lines[i]);
         				
         				
