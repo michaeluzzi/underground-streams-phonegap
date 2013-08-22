@@ -100,7 +100,7 @@ var onPositionSuccess = function(position) {
         function(nearbyStations) {
         	jsonObj.nearbyStations = nearbyStations;
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
-        	jsonObj.lines = [];
+        	jsonObj.lines = new Array();
         	var submitLineDropdown = document.getElementById("submit-line");
         	for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
         	{
@@ -116,10 +116,10 @@ var onPositionSuccess = function(position) {
         				//alert(line);
         				//alert(stations.length);
         				jsonObj.lines.push({
-        					"line" : "A",			
+        					"line" : line,			
         					"stations" : stations
         				});
-        				alert(jsonObj.lines[i].stations.line);
+        				alert(jsonObj.lines[i].line);
         			}
         		);
         		//alert(jsonObj.lines[i].line);
