@@ -125,8 +125,8 @@
 				<div data-role="content" class="content-background">									
 					<p>Are you getting on at</p>
 					<p id="location-name"></p>
-					<a href="#browse" class="btn btn-inverse">Yes</a>
-					<a href="#browse" class="btn btn-inverse">No</a>
+					<a href="#browse" class="btn btn-inverse" onclick="loadBrowseContent()">Yes</a>
+					<a href="#browse" class="btn btn-inverse" onclick="loadBrowseContent()">No</a>
 
 				</div><!-- /content -->
 	
@@ -219,7 +219,7 @@
 				<div data-role="content" class="content-background">
 					<p>OUTBOUND FROM</p>
 					<p id="location-browse"></p>
-					<div class="container">
+					<div id="browse-content" class="container">
 						<!-- <div class="span3">
 							<img src="images/train.png" width="20%">
 							<h3>Title</h3>

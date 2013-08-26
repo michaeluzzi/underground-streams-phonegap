@@ -176,17 +176,17 @@ var onPositionSuccess = function(position) {
         	
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
-				alert(nearbyStations[j].STOP_NAME);
+				//alert(nearbyStations[j].STOP_NAME);
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[j].STOP_ID;
 				$.getJSON(url,
 					function(stationContent) {
-						alert(stationContent[0].url);
+						//alert(stationContent[0].url);
 						for (var m=0; m<jsonObj.nearbyStations.length; m++)
 						{
 							if(stationContent[0].stop_ID == jsonObj.nearbyStations[m].STOP_ID)
 							{
 								jsonObj.nearbyStations[m].content = stationContent;
-								alert(jsonObj.nearbyStations[m].content[0].url);
+								//alert(jsonObj.nearbyStations[m].content[0].url);
 							}
 						}	
 							
@@ -399,6 +399,23 @@ function onGetDirectoryFail(error) {
      {
      	//alert("file path already exists");
      }
+}
+
+function loadBrowseContent() {
+	var s3path = "http://undegroundstream_videos.s3.amazonaws.com/";
+	for (var i = 0; i < jsonObj.nearbyStations[0].content.length; i++)
+	{
+		var text = '<div class="span3">';
+		text += '<img src=' + s3path + jsonObj.nearbyStations[0].content[i].url + ' width = "20%">';
+		$("#browse-content").append(text);
+	
+		/* <div class="span3">
+		<img src="images/train.png" width="20%">
+		<h3>Title</h3>
+		<p>Comments</p>
+		<img src="images/lines/1.png"> */
+	}
+	
 }
 
 
