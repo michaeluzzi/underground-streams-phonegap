@@ -28,14 +28,6 @@ var databaseFile;
 
 
 
-function onResume() {
-	alert("resume");
-}
-
-function onPause() {
-	alert("pause");
-}
-
 var app = {
     // Application Constructor
     initialize: function() {
@@ -435,6 +427,14 @@ function loadBrowseContent() {
 	}
 	$("#browse-content").append(text);
 	
+}
+
+function onResume() {
+	alert("resume " + jsonObj.nearbyStations[0].STOP_NAME);
+}
+
+function onPause() {
+	alert("pause");
 }
 
 
