@@ -430,7 +430,7 @@ function loadBrowseContent() {
 }
 
 function onResume() {
-	alert("resume " + jsonObj.nearbyStations[0].STOP_NAME);
+	alert("resume "/* + jsonObj.nearbyStations[0].STOP_NAME*/);
 }
 
 function onPause() {
