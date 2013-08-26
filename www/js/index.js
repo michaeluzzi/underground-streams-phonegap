@@ -402,11 +402,13 @@ function onGetDirectoryFail(error) {
 }
 
 function loadBrowseContent() {
+	alert(jsonObj.nearbyStations[0].content.length + " photos");
 	var s3path = "http://undegroundstream_videos.s3.amazonaws.com/";
 	for (var i = 0; i < jsonObj.nearbyStations[0].content.length; i++)
 	{
 		var text = '<div class="span3">';
 		text += '<img src=' + s3path + jsonObj.nearbyStations[0].content[i].url + ' width = "20%">';
+		text += '</div>';
 		$("#browse-content").append(text);
 	
 		/* <div class="span3">
