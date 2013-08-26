@@ -24,6 +24,13 @@ var destinationType; // sets the format of returned value
 var fs; // file system
 var uri; // uri of current image
 var fileToMove; // fileEntry of current image
+var databaseFile;
+
+document.addEventListener("resume", onResume, false);
+
+function onResume() {
+	alert("resume");
+}
 
 var app = {
     // Application Constructor
