@@ -105,6 +105,8 @@ var onPositionSuccess = function(position) {
         	//jsonObj.nearbyStations = JSON.parse(nearbyStations);
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
         	//var lines = new Array();
+        	var loc = document.getElementById('location-name');
+        	loc.innerHTML = jsonObj.nearbyStations[0].STOP_NAME + "?";
         	jsonObj.lines = new Array();
         	var submitLineDropdown = document.getElementById("submit-line");
         	var submitStopDropdown = document.getElementById("submit-stop");

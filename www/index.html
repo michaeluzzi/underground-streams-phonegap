@@ -114,9 +114,44 @@
 			</div>
 			
 			
-			<!-- <div data-role="page" id="camera">
-				<div data
-			</div> -->
+			<!-- Location Page -->
+			<div data-role="page" id="location">
+				<div data-role="header">
+					<h3>BROWSE</h3>
+					<!-- <a href="#login" data-role="button" class="pull-right" sytle="margin-top: 20px;">Login</a> -->
+					<a href="#login" class="btn btn-inverse" style="margin-top: 5px; margin-left: 10px;">Login</a>
+				</div><!-- /header -->
+
+				<div data-role="content" class="content-background">									
+					<p>Are you getting on at</p>
+					<p id="location-name"></p>
+					<a href="#browse" class="btn btn-inverse">Yes</a>
+					<a href="#browse" class="btn btn-inverse">No</a>
+
+				</div><!-- /content -->
+	
+				<div data-role="footer" data-position="fixed">
+					<div class="bottom-buttons">
+						<a href="#streams" class="menuLink storiesLink">
+							<div class="icon" ><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Stories</span>
+						</a>
+						<a href="#browse" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">Browse</span>
+						</a>
+						<a href="#participate" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-stories.png" class="pull-left" style="padding-top: 5px;"></div>
+							<span class="menuLabel">Participate</span>
+						</a>
+						<a href="#myentries" class="menuLink storiesLink">
+							<div class="icon"><img src="img/icon-gallery.png" class="pull-left"></div>
+							<span class="menuLabel">My Entries</span>
+						</a>									
+					</div>
+				</div><!-- /footer -->
+			</div>
+			
 
 			
 			<!-- Weekly Challenge -->
@@ -325,7 +360,7 @@
 			</div>
 
 
-			<!-- Start of page: /myentries -->
+			<!-- Start of page: /myentries-individual -->
 			<div data-role="page" class="page" id="myentries-individual">
 				<div data-role="header">
 					<h1>My Entries</h1>
