@@ -404,12 +404,13 @@ function onGetDirectoryFail(error) {
 function loadBrowseContent() {
 	alert(jsonObj.nearbyStations[0].content.length + " photos");
 	var s3path = "http://undegroundstream_videos.s3.amazonaws.com/";
+	var text = "";
 	for (var i = 0; i < jsonObj.nearbyStations[0].content.length; i++)
 	{
-		var text = '<div class="span3">';
+		alert(i);
+		text += '<div class="span3">';
 		text += '<img src=' + s3path + jsonObj.nearbyStations[0].content[i].url + ' width = "20%">';
 		text += '</div>';
-		$("#browse-content").append(text);
 	
 		/* <div class="span3">
 		<img src="images/train.png" width="20%">
@@ -417,6 +418,7 @@ function loadBrowseContent() {
 		<p>Comments</p>
 		<img src="images/lines/1.png"> */
 	}
+	$("#browse-content").append(text);
 	
 }
 
