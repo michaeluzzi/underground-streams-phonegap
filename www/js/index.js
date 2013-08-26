@@ -176,10 +176,11 @@ var onPositionSuccess = function(position) {
         	
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
-				alert(j);
-				/*var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[j].STOP_ID;
+				alert(nearbyStations[j].STOP_NAME);
+				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[j].STOP_ID;
 				$.getJSON(url,
 					function(stationContent) {
+						alert(stationContent[0].url);
 						for (var m=0; m<jsonObj.nearbyStations.length; m++)
 						{
 							if(stationContent[0].stop_ID == jsonObj.nearbyStations[m].STOP_ID)
@@ -190,7 +191,7 @@ var onPositionSuccess = function(position) {
 						}	
 							
 					}
-				);*/
+				);
 			}
         		
         }
