@@ -402,14 +402,16 @@ function onGetDirectoryFail(error) {
 }
 
 function loadBrowseContent() {
-	alert(jsonObj.nearbyStations[0].content.length + " photos");
+	//alert(jsonObj.nearbyStations[0].content.length + " photos");
 	var s3path = "http://undegroundstream_videos.s3.amazonaws.com/";
 	var text = "";
 	for (var i = 0; i < jsonObj.nearbyStations[0].content.length; i++)
 	{
-		alert(i);
+		//alert(i);
 		text += '<div class="span3">';
 		text += '<img src=' + s3path + jsonObj.nearbyStations[0].content[i].url + ' width = "20%">';
+		text += '<h3>' + jsonObj.nearbyStations[0].content[i].title + '</h3>';
+		text += '<p>comments(' + jsonObj.nearbyStations[0].content[i].comments.length + ')</p>';
 		text += '</div>';
 	
 		/* <div class="span3">
