@@ -179,7 +179,14 @@ var onPositionSuccess = function(position) {
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[j].STOP_ID;
 				$.getJSON(url,
 					function(stationContent) {
-							// populate jsonObj with station content	
+						for (var m=0; m<jsonObj.nearbyStations.length; m++)
+						{
+							if(stationContent[0].stop_ID == jsonObj.nearbyStations[m].STOP_ID)
+							{
+								jsonObj.nearbyStations[m].content = stationContent;
+								alert(jsonObj.nearbyStations[m].content[0].url);
+							}
+						}	
 							
 					}
 				);
