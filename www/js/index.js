@@ -26,10 +26,14 @@ var uri; // uri of current image
 var fileToMove; // fileEntry of current image
 var databaseFile;
 
-document.addEventListener("resume", onResume, false);
+
 
 function onResume() {
 	alert("resume");
+}
+
+function onPause() {
+	alert("pause");
 }
 
 var app = {
@@ -44,6 +48,8 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("resume", onResume, false);
+        document.addEventListener("pause", onPause, false);
     },
     // deviceready Event Handler
     //
