@@ -417,13 +417,10 @@ function loadBrowseContent() {
 		text += '<img src=' + s3path + jsonObj.nearbyStations[0].content[i].url + ' width = "20%">';
 		text += '<h3>' + jsonObj.nearbyStations[0].content[i].title + '</h3>';
 		text += '<p>comments(' + jsonObj.nearbyStations[0].content[i].comments.length + ')</p>';
+		text += '<br/>';
+		text += '<img src=' + jsonObj.nearbyStations[0].content[i].line + '.png />';
 		text += '</div>';
 	
-		/* <div class="span3">
-		<img src="images/train.png" width="20%">
-		<h3>Title</h3>
-		<p>Comments</p>
-		<img src="images/lines/1.png"> */
 	}
 	$("#browse-content").append(text);
 	
