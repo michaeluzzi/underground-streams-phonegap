@@ -130,16 +130,15 @@ var onPositionSuccess = function(position) {
         	// only get one line
         	for (var i = 0; i < 1; i++)
         	{
-        		alert(i);
         		var line = jsonObj.nearbyStations[0].Routes_ALL[i];
         		// add line to dropdown on photo submit form
         		submitLineDropdown.add(new Option(line, line), null);
         		
         		// get the stops for each subway line    		
-        		/*$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
+        		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         			function(stations) {
         				alert("Getting stops for "+ line + " line");
-        				alert(line + " line " + stations.length + " stops);
+        				alert(line + " line " + stations.length + " stops");
         				jsonObj.lines.push({
         					line : line,			
         					stations : stations
@@ -161,9 +160,9 @@ var onPositionSuccess = function(position) {
         					}
         					firstLine = true;
         				}
-        		});*/
+        		});
         	}
-        	/*
+        	
         	// testing dropdown
         	//submitLineDropdown.add(new Option("L", "L"), null);
         	
@@ -184,7 +183,7 @@ var onPositionSuccess = function(position) {
 							}
 						}	
 				});
-			}*/
+			}
         		
     }); // end getNearbyStations callback
     
