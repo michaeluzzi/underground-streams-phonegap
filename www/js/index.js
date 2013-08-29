@@ -110,12 +110,11 @@ var onPositionSuccess = function(position) {
     //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
     // real coordinates
     var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
-    $.getJSON(str,
-        function(nearbyStations) {
+    $.getJSON(str, function(nearbyStations) {
         	jsonObj.nearbyStations = nearbyStations;
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
         	// populate html of location page
-        	var loc = document.getElementById('location-name');
+        	/*var loc = document.getElementById('location-name');
         	loc.innerHTML = jsonObj.nearbyStations[0].STOP_NAME + "?";
         	var locBrowse = document.getElementById('location-browse');
         	locBrowse.innerHTML = jsonObj.nearbyStations[0].STOP_NAME;
@@ -161,10 +160,7 @@ var onPositionSuccess = function(position) {
         					}
         					firstLine = true;
         				}
-        				
-        			}
-        		);
-        		
+        		});	
         	}
         	
         	// testing dropdown
@@ -186,13 +182,10 @@ var onPositionSuccess = function(position) {
 								jsonObj.nearbyStations[m].content = stationContent;
 							}
 						}	
-							
-					}
-				);
-			}
+				});
+			}*/
         		
-        //}
-    ); // end getNearbyStations callback
+    }); // end getNearbyStations callback
     
 }; // end onPositionSuccess
 
