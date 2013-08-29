@@ -191,10 +191,10 @@ var onPositionSuccess = function(position) {
 				);
 			}
         		
-        }
-    );
+        //}
+    ); // end getNearbyStations callback
     
-};
+}; // end onPositionSuccess
 
 // onError Callback receives a PositionError object
 //
