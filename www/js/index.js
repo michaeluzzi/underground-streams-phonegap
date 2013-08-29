@@ -408,6 +408,22 @@ function onGetDirectoryFail(error) {
 
 function loadBrowseContent() {
 	//alert(jsonObj.nearbyStations[0].content.length + " photos");
+	
+	var challengeTitle = jsonObj.activeChallenges[0].title;
+	var stopName = jsonObj.nearbyStations[0].STOP_NAME;
+	var lines = "";
+	for (var s = 0; s < jsonObj.nearbyStations[0].Routes_ALL.length; s++)
+	{
+		lines += " ";
+		lines += jsonObj.nearbyStations[0].Routes_ALL[s];
+	}
+	
+	var browseModeDropdown = "";
+	browseModeDropdown += '<li>' + challengeTitle + ' #' + stopName + '</li>';
+	browseModeDropdown += '<li>' + challengeTitle + lines;
+	
+	$("#browse-mode-dropdown").append(browseModeDropdown);
+	
 	var s3path = "http://undegroundstream_videos.s3.amazonaws.com/";
 	var text = "";
 	for (var i = 0; i < jsonObj.nearbyStations[0].content.length; i++)
