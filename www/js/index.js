@@ -64,11 +64,11 @@ var app = {
         $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getActiveChallenges",
         	function(activeChallenges) {
         		jsonObj.activeChallenges = activeChallenges;
+        		// populate the html of the weekly challenge page
         		var weeklyChallengeContent = "";
         		weeklyChallengeContent += '<h1>' + jsonObj.activeChallenges[0].title + '</h1>';
         		weeklyChallengeContent += '<p>' + jsonObj.activeChallenges[0].description + '</p>';
         		$("#weekly-challenge-content").append(weeklyChallengeContent);
-        		//jsonObj.activeChallenges = JSON.parse(activeChallenges);
         		//alert(activeChallenges);
         	}
         );
@@ -101,51 +101,51 @@ var onPositionSuccess = function(position) {
           'Speed: '             + position.coords.speed             + '\n' +
           'Timestamp: '         + position.timestamp                + '\n');*/
     
-    // real coordinates
-    var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
-    //alert(str);
-    $.getJSON(str,
+    
+    // Find nearby stations
     // hard coded coordinates for testing
     // union square
     //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.735177&lon=-73.991675",
+    // bronx 231 st
     //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
+    // real coordinates
+    var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
+    $.getJSON(str,
         function(nearbyStations) {
         	jsonObj.nearbyStations = nearbyStations;
-        	//jsonObj.nearbyStations = JSON.parse(nearbyStations);
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
-        	//var lines = new Array();
+        	// populate html of location page
         	var loc = document.getElementById('location-name');
         	loc.innerHTML = jsonObj.nearbyStations[0].STOP_NAME + "?";
         	var locBrowse = document.getElementById('location-browse');
         	locBrowse.innerHTML = jsonObj.nearbyStations[0].STOP_NAME;
+        	
         	jsonObj.lines = new Array();
         	var submitLineDropdown = document.getElementById("submit-line");
         	var submitStopDropdown = document.getElementById("submit-stop");
         	var firstLine = false;
-        	for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
+        	        	
+        	// loop through all subway lines that stop at the nearest station and get list of stops for each line
+        	// loop through all lines
+        	//for (var i = 0; i < jsonObj.nearbyStations[0].Routes_ALL.length; i++)
+        	// only get one line
+        	for (var i = 0; i < 1; i++)
         	{
-        		//alert(jsonObj.nearbyStations[0].Routes_ALL[i]);
         		var line = jsonObj.nearbyStations[0].Routes_ALL[i];
+        		// add line to dropdown on photo submit form
         		submitLineDropdown.add(new Option(line, line), null);
-        		     		
-        		//var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getStationsByLine/" + line;
         		
-        		//$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
+        		// get the stops for each subway line    		
         		$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getStops/" + line,
         			function(stations) {
-        				//var apiData = JSON.parse(stations);
-        				alert(line);
-        				alert(stations.length);
-        				//lines.push(line);
+        				alert("Getting stops for "+ line + " line");
+        				alert(line + " line " + stations.length + " stops);
         				jsonObj.lines.push({
         					line : line,			
         					stations : stations
         				});
-        				//alert(jsonObj.lines[0].line);
-        				//alert(jsonObj.lines[0].stations.length);
-        				//alert(jsonObj.lines[0]);
         				
-        				
+        				// add the stops for the first subway line to the dropdown on photo submit form
         				if (firstLine == false)
         				{
         					for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
@@ -153,9 +153,9 @@ var onPositionSuccess = function(position) {
         						var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
         						var stationId = jsonObj.lines[0].stations[k].STOP_ID;
         						submitStopDropdown.add(new Option(stationName, stationId), null);
+        						// pre-select the nearest stop in the dropdown
         						if (stationId === jsonObj.nearbyStations[0].STOP_ID)
         						{
-        							alert(stationId);
         							submitStopDropdown.options[k].selected = true;
         						}
         					}
@@ -164,38 +164,26 @@ var onPositionSuccess = function(position) {
         				
         			}
         		);
-        		//alert(jsonObj.lines[i].line);
+        		
         	}
         	
-        	//alert(jsonObj.lines.length);
-        	//alert("hello1");
-        	submitLineDropdown.add(new Option("L", "L"), null);
-        	//alert("hello2");
-        	submitLineDropdown.options[0].selected = true;
-        	//alert("hello3");
-        	//var submitStopDropdown = document.getElementById("submit-stop");
-        	//alert("stations length " + jsonObj.lines[0].stations.length);
-        	//alert("hello4");
-        	/*for (var k = 0; k < jsonObj.lines[0].stations.length; k++)
-        	{
-        		var stationName = jsonObj.lines[0].stations[k].NAME_CUR;
-        		var stationId = jsonObj.lines[0].stations[k].STOP_ID;
-        		submitStopDropdown.add(new Option(stationName, stationId), null);
-        	}*/
+        	// testing dropdown
+        	//submitLineDropdown.add(new Option("L", "L"), null);
         	
+        	// pre-select the first subway line in the dropdown
+        	submitLineDropdown.options[0].selected = true;
+        	
+        	// loop through nearby stations and get content
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
-				//alert(nearbyStations[j].STOP_NAME);
 				var url = "http://underground-streams-dev.elasticbeanstalk.com/api/getContentByStop/" + jsonObj.nearbyStations[j].STOP_ID;
 				$.getJSON(url,
 					function(stationContent) {
-						//alert(stationContent[0].url);
 						for (var m=0; m<jsonObj.nearbyStations.length; m++)
 						{
 							if(stationContent[0].stop_ID == jsonObj.nearbyStations[m].STOP_ID)
 							{
 								jsonObj.nearbyStations[m].content = stationContent;
-								//alert(jsonObj.nearbyStations[m].content[0].url);
 							}
 						}	
 							
@@ -223,7 +211,6 @@ function launchCamera() {
 
 // when photo is taken, navigate to submit page and display photo
 function onCameraSuccess(imageURI) {
-	//alert("camera success " + imageURI);
     var image = document.getElementById('previewImg');
     image.style.display = 'block';
     image.src = imageURI;
@@ -242,7 +229,6 @@ function submitPhoto() {
 
 // get directory where file will be moved to ("underground-streams-test")
 function onResolveSuccess(fileEntry) {
-    //alert("resolve success: " + fileEntry.fullPath);
     fileToMove = fileEntry;
     fs.root.getDirectory("underground-streams-test", {create: true, exclusive: false}, onMoveFile, onMoveFileFail);
 }
@@ -263,9 +249,6 @@ function onMoveFileFail(error) {
 
 // after file is moved, try to immediately upload it
 function onFileMoveSuccess(entry) {
-    //alert("New Path: " + entry.fullPath);
-    //uploadFile(entry);
-    
     uploadFile(entry);
 }
 
@@ -273,7 +256,7 @@ function onFileMoveFail(error) {
     alert(error.code);
 }
 
-// upload file to server using ajax
+// upload file to server using ajax - this doesn't work
 function uploadFile2(entry) {
 	alert("upload file " + entry.name);
 	//var theFile;
@@ -355,13 +338,9 @@ function uploadFile(entry) {
     options.mimeType="image/jpeg";
 
     var params = new Object();
-    //params.title = "testUpload";
     params.title = document.getElementById("submit-title").value;
-  	//params.subwayLine = "1";
   	params.subwayLine = document.getElementById("submit-line").value;
-  	//params.subwayStop = "104";
   	params.subwayStop = document.getElementById("submit-stop").value;
-  	//params.challengeID = "521248324138b08c6c000005";
   	params.challengeID = jsonObj.activeChallenges[0]._id;
 
     options.params = params;
@@ -371,10 +350,7 @@ function uploadFile(entry) {
     ft.upload( entry.fullPath, encodeURI("http://underground-streams-dev.elasticbeanstalk.com/api/uploadContent"),
         function(result) {
 			//upload successful
-			alert("upload success");
-			//alert(result.bytesSent); 
-			//alert(result.responseCode);
-			//alert(result.response);       
+			alert("upload success");      
         },
         function(error) {
             //upload unsuccessful, error occured while upload. 
@@ -390,8 +366,6 @@ function onFileSystemSuccess(fileSystem) {
 	fs = fileSystem;
 	var entry = fs.root;
     entry.getDirectory("underground-streams-test", {create: true, exclusive: true}, onGetDirectorySuccess, onGetDirectoryFail);
-    //alert(fileSystem.name);
-    //alert(fileSystem.root.name);
 }
 
 function onFileSystemFail(evt) {
@@ -410,9 +384,8 @@ function onGetDirectoryFail(error) {
      }
 }
 
+// populate html with content
 function loadBrowseContent() {
-	//alert(jsonObj.nearbyStations[0].content.length + " photos");
-	
 	var challengeTitle = jsonObj.activeChallenges[0].title;
 	var stopName = jsonObj.nearbyStations[0].STOP_NAME;
 	var lines = "";
@@ -447,7 +420,7 @@ function loadBrowseContent() {
 }
 
 function onResume() {
-	alert("resume "/* + jsonObj.nearbyStations[0].STOP_NAME*/);
+	alert("resume ");
 }
 
 function onPause() {
