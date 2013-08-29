@@ -114,7 +114,7 @@ var onPositionSuccess = function(position) {
         	jsonObj.nearbyStations = nearbyStations;
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
         	// populate html of location page
-        	/*var loc = document.getElementById('location-name');
+        	var loc = document.getElementById('location-name');
         	loc.innerHTML = jsonObj.nearbyStations[0].STOP_NAME + "?";
         	var locBrowse = document.getElementById('location-browse');
         	locBrowse.innerHTML = jsonObj.nearbyStations[0].STOP_NAME;
@@ -168,7 +168,7 @@ var onPositionSuccess = function(position) {
         	
         	// pre-select the first subway line in the dropdown
         	submitLineDropdown.options[0].selected = true;
-        	
+        	/*
         	// loop through nearby stations and get content
         	for (var j=0; j<jsonObj.nearbyStations.length; j++)
 			{
