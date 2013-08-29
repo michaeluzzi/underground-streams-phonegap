@@ -64,6 +64,10 @@ var app = {
         $.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/getActiveChallenges",
         	function(activeChallenges) {
         		jsonObj.activeChallenges = activeChallenges;
+        		var weeklyChallengeContent = "";
+        		weeklyChallengeContent += '<h1>' + jsonObj.activeChallenges[0].title + '</h1>';
+        		weeklyChallengeContent += '<p>' + jsonObj.activeChallenges[0].description + '</p>';
+        		$("#weekly-challenge-content").append(weeklyChallengeContent);
         		//jsonObj.activeChallenges = JSON.parse(activeChallenges);
         		//alert(activeChallenges);
         	}
