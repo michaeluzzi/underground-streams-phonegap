@@ -418,7 +418,7 @@ function loadBrowseContent() {
 		text += '<h3>' + jsonObj.nearbyStations[0].content[i].title + '</h3>';
 		text += '<p>comments(' + jsonObj.nearbyStations[0].content[i].comments.length + ')</p>';
 		text += '<br/>';
-		text += '<img src=' + jsonObj.nearbyStations[0].content[i].line + '.png />';
+		text += '<img src="images/lines/' + jsonObj.nearbyStations[0].content[i].line + '.png" />';
 		text += '</div>';
 	
 	}
