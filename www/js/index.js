@@ -108,8 +108,10 @@ var onPositionSuccess = function(position) {
     //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.735177&lon=-73.991675",
     // bronx 231 st
     //$.getJSON("http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.878932&lon=-73.904901",
+    // Luisa's apartment
+    var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=40.678539&lon=--73.964896";
     // real coordinates
-    var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
+    //var str = "http://underground-streams-dev.elasticbeanstalk.com/api/nearbyStations?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;      
     $.getJSON(str, function(nearbyStations) {
         	jsonObj.nearbyStations = nearbyStations;
         	alert("nearest station " + jsonObj.nearbyStations[0].STOP_NAME);
